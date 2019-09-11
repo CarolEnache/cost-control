@@ -9,3 +9,5 @@ const Button = styled.button`
   font-weight: 300;
   padding: 9px 36px;
 `;
+
+export default Button;
