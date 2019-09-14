@@ -3,3 +3,5 @@
 .jest-*
 lib
 node_modules
+index.spec.js.snap
+yarn-error.log
