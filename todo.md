@@ -1,0 +1,1 @@
+implement Atomic design for more info follow up with: http://atomicdesign.bradfrost.com/chapter-2/
