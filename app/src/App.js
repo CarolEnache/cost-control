@@ -1,12 +1,16 @@
 import React from 'react';
 import Button from 'button';
 import Input from 'input';
+import { ReactComponent as AddIcon } from './assets/icons/add.svg';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <Button>hello world</Button>
+      <Button name='add'>
+        <AddIcon />
+      </Button>
       <Input />
     </div>
   );
