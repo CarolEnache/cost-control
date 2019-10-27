@@ -48,7 +48,7 @@ storiesOf('Button', module)
     </Button>
   )
   .add('Select', () =>
-    <Button>
+    <Button name='select'>
       <SelectIcon />
     </Button>
   )

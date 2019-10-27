@@ -6,6 +6,10 @@ const StyledButton = styled.button`
     padding: 0;
     width: 25px;
 
+    svg {
+      width: 100%;
+    }
+
   ${props => props.name === 'submit' && css`
     background: LimeGreen;
     color: #fff;
@@ -29,9 +33,16 @@ const StyledButton = styled.button`
     width: 50px;
   `}
 
-  svg {
+  ${props => props.name === 'select' && css`
     width: 100%;
-  }
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+
+    svg {
+      width: 15px;
+    }
+  `}
 `;
 
 export default StyledButton;

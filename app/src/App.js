@@ -11,7 +11,7 @@ function App() {
       <Button name='add'>
         <AddIcon />
       </Button>
-      <Input />
+      <Input placeholder="Hello world!" id='someId' type='text' label='Repice name' />
     </div>
   );
 }

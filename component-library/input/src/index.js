@@ -1,13 +1,11 @@
-import styled from 'styled-components';
+import React from 'react';
+import { StyledInput, StyledLabel, StyledInputWrapper } from './styled';
 
-const Input = styled.input`
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizig: border-box;
-  font-size: 16px;
-  font-weight: 300;
-  padding: 10px 40px 10px 10px;
-  width: 150px;
-`;
+const Input = ({ id, placeholder, type, label, name }) => (
+  <StyledInputWrapper name={name}>
+      <StyledLabel htmlFor={id} name={name}>{label}</StyledLabel>
+    <StyledInput id={id} placeholder={placeholder} name={name} type={type} />
+  </StyledInputWrapper>
+)
 
 export default Input;
