@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
-    "rollup": "rollup --config rollup.config.js"
+    "build": "rollup --config rollup.config.js"
   },
   "dependencies": {
     "react": "16.9.0",
@@ -15,5 +15,8 @@
     "react": "^15.0.0 || ^16.0.0",
     "react-dom": "^15.0.0 || ^16.0.0",
     "styled-components": "^4.0.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-babel": "^4.3.3"
   }
 }

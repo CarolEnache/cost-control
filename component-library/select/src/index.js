@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyledSelectInput, StyledOptionInput, StyledLabel } from './styled';
 import Button from 'button';
 
-import { ReactComponent as SelectIcon } from '../../../app/src/assets/icons/select.svg'
+// import { ReactComponent as SelectIcon } from '../../../app/src/assets/icons/select.svg'
 
 
 const Select = ({ data, label }) => {
@@ -21,7 +21,7 @@ const Select = ({ data, label }) => {
       <StyledSelectInput onChange={(e) => handleChange(e)}/>
       {!empty && suggestions.map(option =>
         <Button name='select'>
-          {option} <SelectIcon/>
+          {option}
         </Button>
       )}
       {!empty && suggestions.length === 0 && (
