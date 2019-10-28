@@ -1,13 +1,13 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import { ReactComponent as AddIcon } from '../../../app/src/assets/icons/add.svg'
-import { ReactComponent as CloseIcon } from '../../../app/src/assets/icons/close.svg'
-import { ReactComponent as DeleteIcon } from '../../../app/src/assets/icons/delete.svg'
-import { ReactComponent as EditIcon } from '../../../app/src/assets/icons/edit.svg'
-import { ReactComponent as InfoIcon } from '../../../app/src/assets/icons/info.svg'
-import { ReactComponent as MenuIcon } from '../../../app/src/assets/icons/menu.svg'
-import { ReactComponent as SelectIcon } from '../../../app/src/assets/icons/select.svg'
+import { ReactComponent as AddIcon } from 'assets/icons/add.svg'
+import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
+import { ReactComponent as DeleteIcon } from 'assets/icons/delete.svg'
+import { ReactComponent as EditIcon } from 'assets/icons/edit.svg'
+import { ReactComponent as InfoIcon } from 'assets/icons/info.svg'
+import { ReactComponent as MenuIcon } from 'assets/icons/menu.svg'
+import { ReactComponent as SelectIcon } from 'assets/icons/select.svg'
 
 import Button from '.';
 
