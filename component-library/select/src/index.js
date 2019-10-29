@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
-import { StyledSelectInput, StyledOptionInput, StyledLabel } from './styled';
-import Button from 'button';
 
-// import { ReactComponent as SelectIcon } from '../../../app/src/assets/icons/select.svg'
+import { ReactComponent as SelectIcon } from 'assets/icons/select.svg'
+import {
+  CreateButton,
+  Form,
+  SelectButton,
+  SelectList,
+  SelectInput,
+  SubmitButton,
+  Label,
+  Input,
+} from './styled';
 
-
-const Select = ({ data, label }) => {
+const Select = ({ data, selectLabel, quantityLabel }) => {
   const [value, setValue] = useState('')
   const ingrediants = data.map(({name}) => name.toLocaleLowerCase())
 
@@ -16,18 +23,25 @@ const Select = ({ data, label }) => {
   const suggestions = ingrediants.filter(ingredient => ingredient.includes(value))
   const empty = value === '';
   return (
-    <>
-      <StyledLabel>{label}</StyledLabel>
-      <StyledSelectInput onChange={(e) => handleChange(e)}/>
-      {!empty && suggestions.map(option =>
-        <Button name='select'>
-          {option}
-        </Button>
-      )}
+    <Form>
+      <Label>{selectLabel}</Label>
+      <SelectInput onChange={(e) => handleChange(e)}/>
+      <SelectList>
+        {!empty && suggestions.map(option =>
+          <SelectButton>
+            {option} <SelectIcon />
+          </SelectButton>
+        )}
+      </SelectList>
       {!empty && suggestions.length === 0 && (
-        <StyledOptionInput>create this ingredient</StyledOptionInput>
+        <CreateButton>
+          create this ingredient
+        </CreateButton>
       )}
-    </>
+      <Label>{quantityLabel}</Label>
+      <Input placeholder="250" id='someId' type='number' label='Quantity used' />
+      <SubmitButton name='submit' type='submit'>Submit</SubmitButton>
+    </Form>
   )
 };
 

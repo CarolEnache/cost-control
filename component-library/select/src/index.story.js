@@ -37,5 +37,5 @@ const data = [
 
 storiesOf('Select', module)
   .add('default', () =>
-    <Select placeholder="Hello world!" data={data} label='Ingredient name'/>
+    <Select placeholder="Hello world!" data={data} selectLabel='Ingredient name' quantityLabel='Quantity used'/>
   );

@@ -6,6 +6,7 @@ export const StyledInput = styled.input`
   font-weight: 300;
   padding: 10px 40px 10px 10px;
   width: 100%;
+  margin-bottom: 1.5rem;
 `;
 
 export const StyledLabel = styled.label`

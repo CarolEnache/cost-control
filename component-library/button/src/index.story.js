@@ -13,7 +13,7 @@ import Button from '.';
 
 storiesOf('Button', module)
   .add('Submit', () =>
-    <Button name='submit'>
+    <Button name='submit' type='submit'>
       Submit
     </Button>
   )
