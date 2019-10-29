@@ -15,8 +15,9 @@
     "start": "react-scripts start",
     "build-app": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-
+    "eject": "react-scripts eject",
+    "ws": "yarn wsrun --stages --collect-logs",
+    "workspaces:build": "yarn wsrun --stages build"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -33,6 +34,7 @@
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
     "react-test-renderer": "^16.9.0",
-    "styled-components": "^4.3.2"
+    "styled-components": "^4.3.2",
+    "wsrun": "^5.0.2"
   }
 }
