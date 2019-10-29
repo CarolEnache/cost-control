@@ -12,7 +12,7 @@ import {
   Input,
 } from './styled';
 
-const Select = ({ data, selectLabel, quantityLabel }) => {
+const Select = ({ data = [], selectLabel, quantityLabel }) => {
   const [value, setValue] = useState('')
   const ingrediants = data.map(({name}) => name.toLocaleLowerCase())
 
@@ -39,7 +39,7 @@ const Select = ({ data, selectLabel, quantityLabel }) => {
         </CreateButton>
       )}
       <Label>{quantityLabel}</Label>
-      <Input placeholder="250" id='someId' type='number' label='Quantity used' />
+      <Input placeholder="2350" id='someId' type='number' label='Quantity used' />
       <SubmitButton name='submit' type='submit'>Submit</SubmitButton>
     </Form>
   )

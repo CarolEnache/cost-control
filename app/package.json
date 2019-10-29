@@ -10,6 +10,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "component:build": "echo \"Nothing\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

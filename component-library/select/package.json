@@ -2,9 +2,8 @@
   "name": "select",
   "version": "1.0.0",
   "main": "lib/index.js",
-  "module": "src/index.js",
   "scripts": {
-    "build": "rollup --config rollup.config.js"
+    "component:build": "rollup --config rollup.config.js"
   },
   "dependencies": {
     "react": "^16.9.0",

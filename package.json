@@ -17,7 +17,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "ws": "yarn wsrun --stages --collect-logs",
-    "workspaces:build": "yarn wsrun --stages build"
+    "workspaces:build": "yarn wsrun --stages component:build"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
