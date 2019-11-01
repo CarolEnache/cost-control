@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import Button from '@component-library/button';
 
-import { ReactComponent as SelectIcon } from 'assets/icons/select.svg'
+// import { ReactComponent as SelectIcon } from 'assets/icons/select.svg'
 import {
   CreateButton,
   Form,
@@ -29,7 +30,7 @@ const Select = ({ data = [], selectLabel, quantityLabel }) => {
       <SelectList>
         {!empty && suggestions.map(option =>
           <SelectButton>
-            {option} <SelectIcon />
+            {option}
           </SelectButton>
         )}
       </SelectList>
@@ -41,6 +42,7 @@ const Select = ({ data = [], selectLabel, quantityLabel }) => {
       <Label>{quantityLabel}</Label>
       <Input placeholder="2350" id='someId' type='number' label='Quantity used' />
       <SubmitButton name='submit' type='submit'>Submit</SubmitButton>
+      <Button>From Workspace</Button>
     </Form>
   )
 };

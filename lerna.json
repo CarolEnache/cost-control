@@ -2,7 +2,7 @@
   "packages": [
     "component-library/*",
     "app",
-    "assets/*"
+    "assets"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,

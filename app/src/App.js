@@ -1,7 +1,9 @@
 import React from 'react';
-import Button from 'button';
+
+import Button from '@component-library/button';
 import Input from 'input';
 import Select from 'select'
+
 import { ReactComponent as AddIcon } from 'assets/icons/add.svg';
 
 import './App.css';

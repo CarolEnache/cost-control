@@ -17,7 +17,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "ws": "yarn wsrun --stages --collect-logs",
-    "workspaces:build": "yarn wsrun --stages component:build"
+    "workspaces:build": "yarn wsrun --stages component:build",
+    "library": "yarn && yarn workspaces:build && yarn dev"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.0",
@@ -34,7 +35,12 @@
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
     "react-test-renderer": "^16.9.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "styled-components": "^4.3.2",
     "wsrun": "^5.0.2"
+  },
+  "dependencies": {
+    "rollup-plugin-peer-deps-external": "^2.2.0"
   }
 }
