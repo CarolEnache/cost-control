@@ -4,7 +4,7 @@ const resolve = require('rollup-plugin-node-resolve');
 const peerDepsExternal = require('rollup-plugin-peer-deps-external');
 const json = require('rollup-plugin-json');
 
-module.exports = {
+const ceva  = {
   input: 'src/index.js',
   output: {
     file: 'lib/index.js',
@@ -28,3 +28,5 @@ module.exports = {
     json()
   ]
 };
+
+export default ceva;

@@ -1,3 +1,3 @@
-import rollupConfig from 'build-config/rollup/rollup-config';
+import ceva from '../../build-config/rollup/rollup.config';
 
-export default rollupConfig;
+export default ceva;

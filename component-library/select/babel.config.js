@@ -1,1 +1,1 @@
-module.exports = require('@cost-control/build-config/babel/babelrc.react');
+module.exports = require('build-config/babel/babelrc.react');
