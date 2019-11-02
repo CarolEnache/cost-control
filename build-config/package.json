@@ -1,0 +1,38 @@
+{
+  "name": "@cost-control/build-config",
+  "version": "1.0.0",
+  "license": "MIT",
+  "files": [
+    "rollup/rollup.config.js"
+  ],
+  "devDependencies": {
+    "@babel/cli": "^7.6.0",
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/react": "^5.1.11",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-styled-components": "^1.10.6",
+    "lerna": "^3.16.4",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-scripts": "3.1.1",
+    "react-test-renderer": "^16.9.0",
+    "rollup-plugin-json": "^4.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "styled-components": "^4.3.2",
+    "wsrun": "^5.0.2"
+  },
+  "scripts": {
+    "component:build": "echo \"Nothing\""
+  },
+  "dependencies": {
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "rollup": "^1.21.4",
+    "styled-components": "4.3.2"
+  }
+}

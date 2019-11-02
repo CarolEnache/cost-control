@@ -1,15 +1,3 @@
-import babel from 'rollup-plugin-babel';
+import rollupConfig from 'build-config/rollup/rollup-config';
 
-export default {
-    input: 'src/index.js',
-    output: {
-      file: 'lib/index.js',
-      format: 'cjs',
-    },
-    external: ['styled-components'],
-    plugins: [
-      babel({
-        exclude: "node_modules/**"
-      }),
-    ]
-  };
+export default rollupConfig;
