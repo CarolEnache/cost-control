@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import Button from '@component-library/button';
+import Button from 'button';
 
 // import { ReactComponent as SelectIcon } from 'assets/icons/select.svg'
 import {
@@ -42,7 +42,7 @@ const Select = ({ data = [], selectLabel, quantityLabel }) => {
       <Label>{quantityLabel}</Label>
       <Input placeholder="2350" id='someId' type='number' label='Quantity used' />
       <SubmitButton name='submit' type='submit'>Submit</SubmitButton>
-      {/* <Button>From Workspace</Button> */}
+      <Button>From Workspace</Button>
     </Form>
   )
 };
