@@ -1,8 +1,9 @@
 {
   "packages": [
-    "component-library/*",
     "app",
-    "assets"
+    "assets/*",
+    "build-config/*",
+    "component-library/*"
   ],
   "npmClient": "yarn",
   "useWorkspaces": true,
