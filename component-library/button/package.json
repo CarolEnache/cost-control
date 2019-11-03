@@ -1,5 +1,5 @@
 {
-  "name": "@component-library/button",
+  "name": "button",
   "version": "1.0.0",
   "main": "lib/index.js",
   "scripts": {
