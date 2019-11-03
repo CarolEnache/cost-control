@@ -2,6 +2,7 @@
   "name": "input",
   "version": "1.0.0",
   "main": "lib/index.js",
+  "module": "lib/index.es.js",
   "scripts": {
     "component:build": "rollup --config rollup.config.js"
   },

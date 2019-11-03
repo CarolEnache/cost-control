@@ -2,7 +2,7 @@ import React, { useEffect, useState }  from 'react';
 
 import firebase from './firebase';
 
-import Button from '@component-library/button';
+import Button from 'button';
 import Input from 'input';
 import Select from 'select'
 
