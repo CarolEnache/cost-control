@@ -6,10 +6,16 @@ const json = require('rollup-plugin-json');
 
 module.exports = {
   input: 'src/index.js',
-  output: {
-    file: 'lib/index.js',
-    format: 'cjs',
-  },
+  output: [
+    {
+      file: 'lib/index.js',
+      format: 'cjs',
+    },
+    {
+      file: 'lib/index.es.js',
+      format: 'es',
+    }
+  ],
   external: [
     'react',
     'styled-components',
