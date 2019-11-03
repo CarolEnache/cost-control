@@ -7,6 +7,7 @@
     "component:build": "rollup --config rollup.config.js"
   },
   "dependencies": {
+    "button": "^1.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "styled-components": "^4.3.2"
