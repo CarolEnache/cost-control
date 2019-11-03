@@ -34,8 +34,12 @@ const data = [
   },
 ]
 
+const handleIngredientSubmition = (event) => {
+  event.preventDefault();
+  console.log('submited')
+}
 
 storiesOf('Select', module)
   .add('default', () =>
-    <Select placeholder="Hello world!" data={data} selectLabel='Ingredient name' quantityLabel='Quantity used'/>
+    <Select placeholder="Hello world!" data={data} submit={handleIngredientSubmition}/>
   );

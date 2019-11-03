@@ -6,20 +6,9 @@ const StyledButton = styled.button`
     padding: 0;
     width: 25px;
 
-    svg {
+    img {
       width: 100%;
     }
-
-  ${props => props.name === 'submit' && css`
-    background: LimeGreen;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 300;
-    padding: 9px 36px;
-    width: auto;
-  `}
 
   ${props => props.name === 'add' && css`
     background: LimeGreen;
@@ -37,11 +26,19 @@ const StyledButton = styled.button`
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin: 10px;
+    margin: 10px 0;
 
-    svg {
+    img {
       width: 15px;
     }
+  `}
+
+  ${props => props.name === 'create' && css`
+  background: salmon;
+  padding: 1rem;
+  width: 100%;
+  color: white;
+  font-size: 1rem;
   `}
 `;
 

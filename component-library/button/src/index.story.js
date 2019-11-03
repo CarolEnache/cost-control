@@ -1,54 +1,49 @@
 import React from 'react';
 import {storiesOf} from '@storybook/react';
 
-import { ReactComponent as AddIcon } from 'assets/icons/add.svg'
-import { ReactComponent as CloseIcon } from 'assets/icons/close.svg'
-import { ReactComponent as DeleteIcon } from 'assets/icons/delete.svg'
-import { ReactComponent as EditIcon } from 'assets/icons/edit.svg'
-import { ReactComponent as InfoIcon } from 'assets/icons/info.svg'
-import { ReactComponent as MenuIcon } from 'assets/icons/menu.svg'
-import { ReactComponent as SelectIcon } from 'assets/icons/select.svg'
+import AddIcon from 'assets/icons/add.svg'
+import CloseIcon from 'assets/icons/close.svg'
+import DeleteIcon from 'assets/icons/delete.svg'
+import EditIcon from 'assets/icons/edit.svg'
+import InfoIcon from 'assets/icons/info.svg'
+import MenuIcon from 'assets/icons/menu.svg'
+import SelectIcon from 'assets/icons/select.svg'
 
 import Button from '.';
 
 storiesOf('Button', module)
-  .add('Submit', () =>
-    <Button name='submit' type='submit'>
-      Submit
-    </Button>
-  )
   .add('Add ingredient', () =>
     <Button name='add'>
-      <AddIcon />
+      <img src={AddIcon} alt="Add Icon"/>
     </Button>
   )
   .add('Close', () =>
     <Button>
-      <CloseIcon />
+      <img src={CloseIcon} alt="Close Icon" />
     </Button>
   )
   .add('Delete', () =>
     <Button>
-      <DeleteIcon />
+      <img src={DeleteIcon} alt="Delete Icon" />
     </Button>
   )
   .add('Edit', () =>
     <Button>
-      <EditIcon />
+      <img src={EditIcon} alt="Edit Icon" />
     </Button>
   )
   .add('Info', () =>
     <Button>
-      <InfoIcon />
+      <img src={InfoIcon} alt="Info Icon" />
     </Button>
   )
   .add('Menu', () =>
     <Button name='menu'>
-      <MenuIcon />
+      <img src={MenuIcon} alt="Menu Icon" />
     </Button>
   )
   .add('Select', () =>
     <Button name='select'>
-      <SelectIcon />
+      some option to select <img src={SelectIcon} alt="Select Icon" />
     </Button>
   )

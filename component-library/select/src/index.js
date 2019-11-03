@@ -1,48 +1,56 @@
 import React, { useState } from 'react';
 import Button from 'button';
+import Input from 'input';
 
-// import { ReactComponent as SelectIcon } from 'assets/icons/select.svg'
+import select from 'assets/icons/select.svg';
+
 import {
-  CreateButton,
   Form,
-  SelectButton,
   SelectList,
-  SelectInput,
-  SubmitButton,
-  Label,
-  Input,
 } from './styled';
 
-const Select = ({ data = [], selectLabel, quantityLabel }) => {
-  const [value, setValue] = useState('')
-  const ingrediants = data.map(({name}) => name.toLocaleLowerCase())
+const Select = ({ data = [], submit }) => {
+  const [value, setValue] = useState('');
+  const [ingredient, setIngredient] = useState('Type your ingredient');
+
+  const ingrediants = data.map(({name}) => name.toLocaleLowerCase());
+  const suggestions = ingrediants.filter(ingredient => ingredient.includes(value));
+  const empty = value === '';
 
   const handleChange = (e) => {
     setValue(e.target.value)
+  };
+
+  const handleClick = (event, option) => {
+    event.preventDefault()
+    setIngredient(option)
+    console.log(ingredient)
   }
 
-  const suggestions = ingrediants.filter(ingredient => ingredient.includes(value))
-  const empty = value === '';
   return (
-    <Form>
-      <Label>{selectLabel}</Label>
-      <SelectInput onChange={(e) => handleChange(e)}/>
+    <Form onSubmit={submit}>
+      <Input
+        // placeholder={ingredient}
+        id='someId'
+        type='text'
+        label='Ingredient name'
+        onChange={(e) => handleChange(e)}
+        value={ingredient}
+      />
       <SelectList>
         {!empty && suggestions.map(option =>
-          <SelectButton>
-            {option}
-          </SelectButton>
+          <Button name='select' onClick={(event) => handleClick(event, option)}>
+            {option} <img src={select}/>
+          </Button>
         )}
       </SelectList>
       {!empty && suggestions.length === 0 && (
-        <CreateButton>
+        <Button name='create'>
           create this ingredient
-        </CreateButton>
+        </Button>
       )}
-      <Label>{quantityLabel}</Label>
       <Input placeholder="2350" id='someId' type='number' label='Quantity used' />
-      <SubmitButton name='submit' type='submit'>Submit</SubmitButton>
-      <Button>From Workspace</Button>
+      <Input type='submit' value='submit' />
     </Form>
   )
 };
