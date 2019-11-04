@@ -10,27 +10,26 @@ import {
 } from './styled';
 
 const Select = ({ data = [], submit }) => {
-  const [value, setValue] = useState('');
-  const [ingredient, setIngredient] = useState('Type your ingredient');
+  const [ingredient, setIngredient] = useState();
 
   const ingrediants = data.map(({name}) => name.toLocaleLowerCase());
-  const suggestions = ingrediants.filter(ingredient => ingredient.includes(value));
-  const empty = value === '';
+  const suggestions = ingrediants.filter(ingredientItem => ingredientItem.includes(ingredient));
+
+  const empty = ingredient === '';
 
   const handleChange = (e) => {
-    setValue(e.target.value)
+    setIngredient(e.target.value)
   };
 
   const handleClick = (event, option) => {
     event.preventDefault()
     setIngredient(option)
-    console.log(ingredient)
   }
 
   return (
     <Form onSubmit={submit}>
       <Input
-        // placeholder={ingredient}
+        placeholder={'Type your ingredient'}
         id='someId'
         type='text'
         label='Ingredient name'
