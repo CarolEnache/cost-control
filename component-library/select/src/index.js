@@ -11,19 +11,20 @@ import {
 
 const Select = ({ data = [], submit }) => {
   const [ingredient, setIngredient] = useState();
+  const [toggleList, setToggleList] = useState(false);
 
   const ingrediants = data.map(({name}) => name.toLocaleLowerCase());
   const suggestions = ingrediants.filter(ingredientItem => ingredientItem.includes(ingredient));
 
-  const empty = ingredient === '';
-
   const handleChange = (e) => {
-    setIngredient(e.target.value)
+    setIngredient(e.target.value);
+    setToggleList(true);
   };
 
   const handleClick = (event, option) => {
-    event.preventDefault()
-    setIngredient(option)
+    event.preventDefault();
+    setIngredient(option);
+    setToggleList(false);
   }
 
   return (
@@ -37,13 +38,13 @@ const Select = ({ data = [], submit }) => {
         value={ingredient}
       />
       <SelectList>
-        {!empty && suggestions.map(option =>
+        {toggleList && suggestions.map(option =>
           <Button name='select' onClick={(event) => handleClick(event, option)}>
             {option} <img src={select}/>
           </Button>
         )}
       </SelectList>
-      {!empty && suggestions.length === 0 && (
+      {toggleList && suggestions.length === 0 && (
         <Button name='create'>
           create this ingredient
         </Button>
