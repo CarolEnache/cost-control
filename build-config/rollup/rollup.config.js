@@ -3,6 +3,7 @@ const babel = require('rollup-plugin-babel');
 const commonjs = require('rollup-plugin-commonjs');
 const peerDepsExternal = require('rollup-plugin-peer-deps-external');
 const json = require('rollup-plugin-json');
+const svg = require('rollup-plugin-svg');
 
 module.exports = {
   input: 'src/index.js',
@@ -35,6 +36,7 @@ module.exports = {
     resolve({
       extensions: ['.js', '.jsx', '.json'],
     }),
-    json()
+    json(),
+    svg()
   ]
 };

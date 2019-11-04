@@ -23,13 +23,19 @@ function App() {
     fetchData()
   }, []);
   console.log(ingredients);
+
+  const handleIngredientSubmition = (event) => {
+    event.preventDefault();
+    console.log('submited')
+  }
+
   return (
     <div className="App">
       <Button name='add'>
         <AddIcon />
       </Button>
       <Input placeholder="Hello world!" id='someId' type='text' label='Repice name' />
-      <Select placeholder="Hello world!" label='Ingredient name' />
+      <Select submit={handleIngredientSubmition} />
     </div>
   );
 }
