@@ -14,11 +14,17 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const docRef = await db.collection(collection).get();
-      docRef.docs.map(doc => console.log(doc.data()))
-      setIngredients(docRef.docs.map(doc => doc.data()))
+      await db.collection(collection).onSnapshot(snapshot => {
+        const ingredientsCollection = {
+          list: snapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+          }))
+        }
+        setIngredients(ingredientsCollection.list)
+      });
     }
-    fetchData()
+  fetchData()
   }, []);
   console.log(ingredients);
 
