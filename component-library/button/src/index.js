@@ -1,7 +1,7 @@
 import React from 'react';
-import StyledButton from './styled';
+import { StyledButton, MenuWrapper } from './styled';
 
-const Button = ({ children, onClick, name, type }) => (
+export const Button = ({ children, onClick, name, type }) => (
   <StyledButton
     onClick={onClick}
     name={name}
@@ -10,5 +10,5 @@ const Button = ({ children, onClick, name, type }) => (
     {children}
   </StyledButton>
 );
-
+export { MenuWrapper };
 export default Button;

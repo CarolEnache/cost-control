@@ -9,7 +9,7 @@ import InfoIcon from 'assets/icons/info.svg'
 import MenuIcon from 'assets/icons/menu.svg'
 import SelectIcon from 'assets/icons/select.svg'
 
-import Button from '.';
+import Button, { MenuWrapper } from '.';
 
 storiesOf('Button', module)
   .add('Add ingredient', () =>
@@ -47,3 +47,13 @@ storiesOf('Button', module)
       some option to select <img src={SelectIcon} alt="Select Icon" />
     </Button>
   )
+  .add('Wrapped', () =>
+    <MenuWrapper>
+      <Button name='menu'>
+        <img src={MenuIcon} alt="Menu Icon" />
+      </Button>
+      <Button>
+        <img src={CloseIcon} alt="Close Icon" />
+      </Button>
+    </MenuWrapper>
+  );

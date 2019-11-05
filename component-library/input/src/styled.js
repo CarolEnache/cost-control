@@ -4,9 +4,9 @@ export const StyledInput = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
   font-weight: 300;
-  padding: 10px 0px;
   width: 100%;
-  margin-bottom: 1.5rem;
+  padding: 16px 0px 16px 5px;
+  margin-bottom: 2.5rem;
 
   ${props => props.type === 'submit' && css`
     border: none;
@@ -38,8 +38,11 @@ export const StyledInputWrapper = styled.div`
     display: flex;
     align-items: baseline;
   `}
-`;
 
-export const SAVEDEMCEZICEACUMINPULAMEA = styled.div`
-  disaply: block;
+  ${props => props.name === 'submit' && css`
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+  `}
 `;

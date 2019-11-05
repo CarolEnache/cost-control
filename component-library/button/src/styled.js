@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-const StyledButton = styled.button`
+export const StyledButton = styled.button`
     background: white;
     border: none;
     padding: 0;
@@ -42,4 +42,9 @@ const StyledButton = styled.button`
   `}
 `;
 
-export default StyledButton;
+export const MenuWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  height: 6rem;
+`;
