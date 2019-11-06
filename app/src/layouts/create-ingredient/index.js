@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 
-import firebase from '../../firebase';
-
 import Title from 'title';
 import Input from 'input';
 import Button, { MenuWrapper } from 'button';
@@ -11,22 +9,13 @@ import CloseIcon from 'assets/icons/close.svg';
 
 import { Layout, Form } from '../../styled';
 
-const collection = 'ingredients_list';
-const db = firebase.firestore();
+import createFirestoreItem from '../../firebase-config/utils/create';
+import { collections } from '../../constants';
 
 function CreateIngredient() {
   const [ingredientName, setIngredientName] = useState('');
   const [ingredientYield, setIngredientYield] = useState(0);
   const [ingredientPrice, setIngredientPrice] = useState(0);
-
-  const createFirestoreItem = (collection, item) => {
-    try {
-      db.collection(collection).add(item);
-    }
-    catch (e) {
-      console.error(e);
-    }
-  };
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -48,7 +37,7 @@ function CreateIngredient() {
       ingredientYield,
       ingredientPrice
     }
-    createFirestoreItem(collection, item);
+    createFirestoreItem(collections.ingredients, item);
   }
 
   return (
