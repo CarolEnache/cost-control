@@ -1,15 +1,26 @@
 import React, { useEffect, useState }  from 'react';
 
 import firebase from './firebase-config/firebase';
-import Button from 'button';
+
+import Button, { MenuWrapper } from 'button';
+import Title from 'title';
+import ListHeader from 'list-header';
 
 import CreateIngredient from '../src/layouts/create-ingredient';
 
 import EditIcon from 'assets/icons/edit.svg';
 import DeleteIcon from 'assets/icons/delete.svg';
 
-import './App.css';
+import MenuIcon from 'assets/icons/menu.svg';
+import CloseIcon from 'assets/icons/close.svg';
+import AddIcon from 'assets/icons/add.svg'
+
+
 import { collections } from './constants'
+import { mockIngredients } from './mockData';
+
+import { Layout } from './styled'
+import './App.css';
 
 const db = firebase.firestore();
 
@@ -31,17 +42,34 @@ function App() {
     fetchData(collections.ingredients)
   }, []);
 
-  console.log(ingredients);
-
   return (
     <div className="App">
-      <CreateIngredient />
-      {ingredients.map(m => {
+
+      <MenuWrapper >
+        <Button name='menu'>
+          <img src={MenuIcon} alt="Menu Icon" />
+        </Button>
+        <Button name='close'>
+          <img src={CloseIcon} alt="Close Icon" />
+        </Button>
+      </MenuWrapper>
+
+      {/* <CreateIngredient /> */}
+      <Layout>
+      <div className='ceva'>
+        <Title title='Ingredients list' />
+        <ListHeader dynamic='yield' />
+      </div>
+      <div className='altceva'>
+
+      </div>
+
+        {mockIngredients.map(({ ingredientName, ingredientYield, ingredientPrice}) => {
         return (
           <div className='test'>
-            <p>{m.ingredientName}</p>
-            <p>{m.ingredientYield}</p>
-            <p>£ {m.ingredientPrice}</p>
+            <p className='ingredient-name'>{ingredientName}</p>
+            <p>{ingredientYield}</p>
+            <p>£ {ingredientPrice}</p>
             <Button>
               <img src={EditIcon} alt="Edit Icon" />
             </Button>
@@ -51,6 +79,12 @@ function App() {
           </div>
         )
       })}
+      </Layout>
+      <div className='add-wrapper'>
+        <Button name='add'>
+            <img src={AddIcon} alt="Add Icon" />
+        </Button>
+      </div>
     </div>
   );
 }

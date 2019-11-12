@@ -47,4 +47,7 @@ export const MenuWrapper = styled.div`
   justify-content: space-between;
   background: white;
   height: 6rem;
+  width: 90%;
+  margin: 0 auto;
+}
 `;

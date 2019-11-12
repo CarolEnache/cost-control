@@ -2,10 +2,6 @@ import React, { useState } from 'react';
 
 import Title from 'title';
 import Input from 'input';
-import Button, { MenuWrapper } from 'button';
-
-import MenuIcon from 'assets/icons/menu.svg';
-import CloseIcon from 'assets/icons/close.svg';
 
 import { Layout, Form } from '../../styled';
 
@@ -42,14 +38,6 @@ function CreateIngredient() {
 
   return (
     <Layout>
-      <MenuWrapper >
-        <Button name='menu'>
-          <img src={MenuIcon} alt="Menu Icon" />
-        </Button>
-        <Button name='close'>
-          <img src={CloseIcon} alt="Close Icon" />
-        </Button>
-      </MenuWrapper>
       <Title title='Create ingredient' />
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Input
