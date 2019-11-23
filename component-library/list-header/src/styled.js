@@ -11,7 +11,7 @@ export const HeaderDetails = styled.span`
   margin-bottom: 5px;
 
   ${props => props.type === 'name' && css`
-    width: 35%;
+    width: 45%;
   `}
   ${props => props.type === 'dynamic' && css`
       margin-right: 45px;

@@ -2,7 +2,7 @@ import firebase from '../firebase';
 
 const db = firebase.firestore();
 
-const  createFirestoreItem = (collection, item) => {
+const createFirestoreItem = (collection, item) => {
   try {
     db.collection(collection).add(item);
   }
