@@ -3,24 +3,15 @@ import Button from 'button';
 
 import { StyledItemsList, ListItem, ItemName } from './styled';
 
-const listClicked = () => {
-  console.log('list was clicked')
-}
-
-const buttonCliked = () => {
-  console.log('button was clicked')
-}
-
-
-const ItemsList = ({ data, icon }) => (
+const ItemsList = ({ data, icon, deleteItem, updateItem }) => (
   <StyledItemsList>
-    {data.map(({ ingredientName, ingredientYield, ingredientPrice }) => {
+    {data.map(({ ingredientName, ingredientYield, ingredientPrice, id }) => {
       return (
         <ListItem className='ingredient-item'>
-          <ItemName className='ingredient-name' onClick={listClicked}>{ingredientName}</ItemName>
-          <span onClick={listClicked}>{ingredientYield}</span>
-          <span onClick={listClicked}>£ {ingredientPrice}</span>
-          <Button onClick={buttonCliked} >
+          <ItemName className='ingredient-name' onClick={updateItem}>{ingredientName}</ItemName>
+          <span onClick={updateItem}>{ingredientYield}</span>
+          <span onClick={updateItem}>£ {ingredientPrice}</span>
+          <Button onClick={() => deleteItem('ingredients_list', id)} >
             <img src={icon} alt="Delete Icon" />
           </Button>
         </ListItem>

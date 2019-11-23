@@ -5,9 +5,18 @@ import DeleteIcon from 'assets/icons/delete.svg';
 
 import ItemsList from '.';
 
+const deleteItem = (id) => {
+  alert(`this button would delete this item`)
+}
+
+const updateItem = (id) => {
+  alert(`this button would update this item`)
+}
+
+
 storiesOf('ItemsList', module)
   .add('Ingredients list', () =>
-    <ItemsList data={mockIngredients} icon={DeleteIcon} />
+    <ItemsList data={mockIngredients} icon={DeleteIcon} deleteItem={deleteItem} updateItem={updateItem}/>
   );
 
 export const mockIngredients = [
