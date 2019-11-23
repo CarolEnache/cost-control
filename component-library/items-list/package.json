@@ -1,19 +1,18 @@
 {
-  "name": "select",
+  "name": "items-list",
   "version": "1.0.0",
   "main": "lib/index.js",
   "module": "lib/index.es.js",
-  "license": "UNLICENSED",
   "scripts": {
     "component:build": "rollup --config rollup.config.js"
   },
   "dependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "styled-components": "^4.3.2",
+    "react": "16.9.0",
+    "react-dom": "16.9.0",
+    "styled-components": "4.3.2",
+    "rollup": "^1.21.4",
     "button": "^1.0.0",
-    "assets": "^1.0.0",
-    "rollup": "^1.21.4"
+    "mock": "^1.0.0"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",

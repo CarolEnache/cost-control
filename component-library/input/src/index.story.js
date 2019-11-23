@@ -8,7 +8,7 @@ storiesOf('Input', module)
   <Input placeholder="Hello world!" id='someId' type='text' label='Repice name' />
 )
 .add('Submit', () =>
-  <Input type='submit' value='submit' />
+  <Input type='submit' value='submit' name='submit'/>
 )
 .add('Number', () =>
   <Input placeholder="12" id='someId' type='number' label='Number of servings' name='servings' />

@@ -1,42 +1,53 @@
 import React, { useEffect, useState }  from 'react';
 
-import firebase from './firebase';
+import firebase from './firebase-config/firebase';
 
-import Button from 'button';
-import Input from 'input';
-import Select from 'select'
+import Button, { MenuWrapper } from 'button';
 
-import { ReactComponent as AddIcon } from 'assets/icons/add.svg';
+import CreateIngredient from '../src/layouts/create-ingredient';
+import ProductList from '../src/layouts/product-list';
+
+import MenuIcon from 'assets/icons/menu.svg';
+import CloseIcon from 'assets/icons/close.svg';
+
+import { collections } from './constants'
 
 import './App.css';
+
+const db = firebase.firestore();
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const db = firebase.firestore();
-      const docRef = await db.collection('ingredients_list').get();
-      docRef.docs.map(doc => console.log(doc.data()))
-      setIngredients(docRef.docs.map(doc => doc.data()))
+    const fetchData = async (data) => {
+      await db.collection(data).onSnapshot(snapshot => {
+        const ingredientsCollection = {
+          list: snapshot.docs.map(doc => ({
+            ...doc.data(),
+            id: doc.id
+          }))
+        }
+        setIngredients(ingredientsCollection.list)
+      });
     }
-    fetchData()
+    fetchData(collections.ingredients)
   }, []);
-  console.log(ingredients);
-
-  const handleIngredientSubmition = (event) => {
-    event.preventDefault();
-    console.log('submited')
-  }
 
   return (
-    <div className="App">
-      <Button name='add'>
-        <AddIcon />
-      </Button>
-      <Input placeholder="Hello world!" id='someId' type='text' label='Repice name' />
-      <Select submit={handleIngredientSubmition} />
-    </div>
+    <>
+      <MenuWrapper >
+        <Button name='menu'>
+          <img src={MenuIcon} alt="Menu Icon" />
+        </Button>
+        <Button name='close'>
+          <img src={CloseIcon} alt="Close Icon" />
+        </Button>
+      </MenuWrapper>
+
+      {/* <CreateIngredient /> */}
+      <ProductList data={ingredients}/>
+    </>
   );
 }
 
