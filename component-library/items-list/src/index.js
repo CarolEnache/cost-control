@@ -7,8 +7,8 @@ const ItemsList = ({ data, icon, deleteItem, updateItem }) => (
   <StyledItemsList>
     {data.map(({ ingredientName, ingredientYield, ingredientPrice, id }) => {
       return (
-        <ListItem className='ingredient-item'>
-          <ItemName className='ingredient-name' onClick={updateItem}>{ingredientName}</ItemName>
+        <ListItem key={id}>
+          <ItemName onClick={updateItem}>{ingredientName}</ItemName>
           <span onClick={updateItem}>{ingredientYield}</span>
           <span onClick={updateItem}>£ {ingredientPrice}</span>
           <Button onClick={() => deleteItem('ingredients_list', id)} >
