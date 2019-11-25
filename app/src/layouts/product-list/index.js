@@ -19,19 +19,25 @@ import { Layout } from '../../styled';
 import { Header, ButtonWrapper } from './styled';
 
 const db = firebase.firestore();
-const updateItem = () => {
-  console.log('update item')
+
+const updateItem = (id) => {
+  console.log(id)
 };
 
 const ProductList = () => {
   const [ingredients, setIngredients] = useState([]);
-  // const [didMount, setDidMount] = useState(false);
 
   useEffect(() => {
-    // setDidMount(true)
     const abortController = new AbortController()
     const signal = abortController.signal
-    const fetchData = async (data) => {
+
+    const fetchData = async (data, { signal }) => {
+      let notUpdate = false;
+
+      if (signal) {
+        signal.addEventListener('abort', event => notUpdate = true);
+      }
+
       await db.collection(data).onSnapshot(snapshot => {
         const ingredientsCollection = {
           list: snapshot.docs.map(doc => ({
@@ -39,12 +45,14 @@ const ProductList = () => {
             id: doc.id
           }))
         }
-        setIngredients(ingredientsCollection.list)
+
+        if (!notUpdate) {
+          setIngredients(ingredientsCollection.list)
+        }
       });
     }
     fetchData(collections.ingredients, {signal})
     return () => abortController.abort();
-    // return () => setDidMount(false);
   }, []);
 
   return (
