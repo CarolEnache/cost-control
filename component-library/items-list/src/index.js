@@ -9,8 +9,8 @@ const ItemsList = ({ data, icon, deleteItem, updateItem }) => (
       return (
         <ListItem key={id}>
           <ItemName onClick={updateItem}>{ingredientName}</ItemName>
-          <span onClick={updateItem}>{ingredientYield}</span>
-          <span onClick={updateItem}>£ {ingredientPrice}</span>
+          <span onClick={(id) => updateItem(id)}>{ingredientYield}</span>
+          <span onClick={(id) => updateItem(id)}>£ {ingredientPrice}</span>
           <Button onClick={() => deleteItem('ingredients_list', id)} >
             <img src={icon} alt="Delete Icon" />
           </Button>
