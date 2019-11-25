@@ -12,6 +12,7 @@ function CreateIngredient() {
   const [ingredientName, setIngredientName] = useState('');
   const [ingredientYield, setIngredientYield] = useState(0);
   const [ingredientPrice, setIngredientPrice] = useState(0);
+  const [title, setTitle] = useState('Create ingredient')
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -28,23 +29,29 @@ function CreateIngredient() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log('altceva')
     const item = {
       ingredientName,
       ingredientYield,
       ingredientPrice
     }
     createFirestoreItem(collections.ingredients, item);
+    setIngredientName('');
+    setIngredientYield('');
+    setIngredientPrice('');
+    setTitle('Create another ingredint')
   }
 
   return (
     <Layout>
-      <Title title='Create ingredient' />
+      <Title title={title} />
       <Form onSubmit={(e) => handleSubmit(e)}>
         <Input
           placeholder='minced meat'
           id='name'
           type='text'
           label='Ingredient name'
+          value={ingredientName}
           onChange={(e) => handleChange(e)}
         />
         <Input
@@ -52,6 +59,7 @@ function CreateIngredient() {
           id='yield'
           type='number'
           label='Package yield'
+          value={ingredientYield}
           onChange={(e) => handleChange(e)}
         />
         <Input
@@ -59,6 +67,7 @@ function CreateIngredient() {
           id='price'
           type='number'
           label='Package price'
+          value={ingredientPrice}
           onChange={(e) => handleChange(e)}
         />
         <Input type='submit' value='submit' name="submit" />
