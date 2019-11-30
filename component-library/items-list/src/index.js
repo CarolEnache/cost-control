@@ -8,9 +8,9 @@ const ItemsList = ({ data, icon, deleteItem, updateItem }) => (
     {data.map(({ ingredientName, ingredientYield, ingredientPrice, id }) => {
       return (
         <ListItem key={id}>
-          <ItemName onClick={updateItem}>{ingredientName}</ItemName>
-          <span onClick={(id) => updateItem(id)}>{ingredientYield}</span>
-          <span onClick={(id) => updateItem(id)}>£ {ingredientPrice}</span>
+          <ItemName onClick={() => updateItem('ingredients_list', id)}>{ingredientName}</ItemName>
+          <span onClick={() => updateItem('ingredients_list', id)}>{ingredientYield}</span>
+          <span onClick={() => updateItem('ingredients_list', id)}>£ {ingredientPrice}</span>
           <Button onClick={() => deleteItem('ingredients_list', id)} >
             <img src={icon} alt="Delete Icon" />
           </Button>
