@@ -28,7 +28,7 @@ const ProductList = () => {
 
   useEffect(() => {
     return setIngredients(context.list)
-  })
+  }, [context.list])
 
   const updateItem = (collection, id) => {
     if (collection === undefined) { //this is a temporary solution that needs to be fixed

@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "module": "lib/index.es.js",
   "scripts": {
-    "component:build": "echo \"Nothing\""
+    "component:build": "rollup --config rollup.config.js"
   },
   "dependencies": {
     "react": "16.9.0",
