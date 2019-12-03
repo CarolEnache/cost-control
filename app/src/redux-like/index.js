@@ -18,6 +18,11 @@ export const reducer = (state = initialState, action) => {
           id: action.id
         }
       }
+    case 'CLEAR_CURRENT_ITEM':
+      return {
+        ...state,
+        currentItem: {}
+      }
     default:
       return state;
   }

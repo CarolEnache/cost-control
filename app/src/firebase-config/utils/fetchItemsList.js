@@ -13,15 +13,15 @@ const useFetchList = (collection)  => {
     const abortController = new AbortController()
     const signal = abortController.signal
 
-    const fetchListItems = async (data, { signal }) => {
+    const fetchListItems = async (collection, { signal }) => {
       let notUpdate = false;
 
       if (signal) {
         signal.addEventListener('abort', event => notUpdate = true);
       }
 
-      await db.collection(data).onSnapshot(snapshot => {
-        const ingredientsCollection = {
+      await db.collection(collection).onSnapshot(snapshot => {
+        const collection = {
           list: snapshot.docs.map(doc => ({
             ...doc.data(),
             id: doc.id
@@ -29,11 +29,12 @@ const useFetchList = (collection)  => {
         }
 
         if (!notUpdate) {
-          dispatch({ type: 'GET_LIST', list: ingredientsCollection.list})
+          dispatch({ type: 'GET_LIST', list: collection.list})
         }
       });
     }
     fetchListItems(collection, { signal })
+    console.log('data fetched')
     return () => abortController.abort();
   }, []);
 }

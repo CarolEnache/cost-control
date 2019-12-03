@@ -31,12 +31,13 @@ const ProductList = () => {
   }, [context.list])
 
   const updateItem = (collection, id) => {
-    if (collection === undefined) { //this is a temporary solution that needs to be fixed
+    if (collection === undefined) {
       return
     }
 
     return dispatch({ type: 'UPDATE_ITEM', collection, id })
   };
+
   return (
     <Layout>
       <Header>

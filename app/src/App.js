@@ -27,7 +27,7 @@ const App = () => {
             </Button>
             <Button name='close'>
               <Link to='/'>
-                <img src={CloseIcon} alt="Close Icon" />
+                <img src={CloseIcon} alt="Close Icon" onClick={() => dispatch({ type: 'CLEAR_CURRENT_ITEM' })}/>
               </Link>
             </Button>
           </MenuWrapper>

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Title from 'title';
 import Input from 'input';
 
-import { StateContext } from '../../App';
+import { StateContext, DispatchContext } from '../../App';
 
 import { Layout, Form } from '../../styled';
 
@@ -13,16 +13,17 @@ import updateFirestoreItem from '../../firebase-config/utils/update';
 import { collections } from '../../constants';
 
 function CreateIngredient() {
-  const [ingredientName, setIngredientName] = useState('');
-  const [ingredientYield, setIngredientYield] = useState(0);
-  const [ingredientPrice, setIngredientPrice] = useState(0);
-  const [currentItemId, setCurrentItemId] = useState('');
+  const [ingredientName, setIngredientName] = useState('')
+  const [ingredientYield, setIngredientYield] = useState(0)
+  const [ingredientPrice, setIngredientPrice] = useState(0)
+  const [currentItemId, setCurrentItemId] = useState('')
   const [title, setTitle] = useState('Create ingredient')
   const context = useContext(StateContext)
+  const dispatch = useContext(DispatchContext)
   const { currentItem, list } = context
   const isEditIngredient = Object.keys(currentItem).length !== 0
 
-  // { console.log(context, Object.keys(context).length)}
+  { console.log(context.currentItem, Object.keys(context).length)}
 
   if (isEditIngredient && ingredientName === '') {
     const { id } = currentItem
@@ -49,7 +50,6 @@ function CreateIngredient() {
   }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     const item = {
       currentItemId,
       ingredientName,
@@ -57,8 +57,9 @@ function CreateIngredient() {
       ingredientPrice
     }
     isEditIngredient ? updateFirestoreItem(collections.ingredients, item) : createFirestoreItem(collections.ingredients, item)
-    setIngredientName('')
-    setIngredientYield('')
+    isEditIngredient && dispatch({ type: 'CLEAR_CURRENT_ITEM' })
+    setIngredientName()
+    setIngredientYield()
     setIngredientPrice('')
     setTitle('Create another ingredint')
   }
