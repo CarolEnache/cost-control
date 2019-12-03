@@ -6,8 +6,8 @@ import { initialState, reducer } from './redux-like';
 
 import Button, { MenuWrapper } from 'button';
 
-import CreateIngredient from './layouts/create-ingredient-layout';
-import ProductList from './layouts/product-list-layout';
+import CreateIngredient from './layouts/create-ingredient-layout/CreateIngredientLayout';
+import ProductList from './layouts/product-list-layout/ProductListLayout';
 
 import MenuIcon from 'assets/icons/menu.svg';
 import CloseIcon from 'assets/icons/close.svg';

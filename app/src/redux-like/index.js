@@ -1,13 +1,22 @@
 export const initialState = {
-  silicon: true
+  list: [],
+  currentItem: {}
 }
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'TEST':
+    case 'GET_LIST':
       return {
         ...state,
-        silicon: false
+        list: action.list
+      }
+    case 'UPDATE_ITEM':
+      return {
+        ...state,
+        currentItem: {
+          collection: action.collection,
+          id: action.id
+        }
       }
     default:
       return state;
