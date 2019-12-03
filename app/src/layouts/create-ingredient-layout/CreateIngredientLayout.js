@@ -1,18 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import Title from 'title';
 import Input from 'input';
 
+import { StateContext } from '../../App';
+
 import { Layout, Form } from '../../styled';
 
 import createFirestoreItem from '../../firebase-config/utils/create';
+import updateFirestoreItem from '../../firebase-config/utils/update';
 import { collections } from '../../constants';
 
 function CreateIngredient() {
   const [ingredientName, setIngredientName] = useState('');
   const [ingredientYield, setIngredientYield] = useState(0);
   const [ingredientPrice, setIngredientPrice] = useState(0);
+  const [currentItemId, setCurrentItemId] = useState('');
   const [title, setTitle] = useState('Create ingredient')
+  const context = useContext(StateContext)
+  const { currentItem, list } = context
+  const isEditIngredient = Object.keys(currentItem).length !== 0
+
+  // { console.log(context, Object.keys(context).length)}
+
+  if (isEditIngredient && ingredientName === '') {
+    const { id } = currentItem
+    const ingredientToBeEdited = list.filter(item => item.id === id)
+    const { ingredientName, ingredientPrice, ingredientYield } = ingredientToBeEdited[0]
+    setIngredientName(ingredientName)
+    setIngredientYield(ingredientYield)
+    setIngredientPrice(ingredientPrice)
+    setCurrentItemId(id)
+    setTitle('Edit this ingredient')
+  }
 
   const handleChange = (e) => {
     switch (e.target.id) {
@@ -29,16 +50,16 @@ function CreateIngredient() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('altceva')
     const item = {
+      currentItemId,
       ingredientName,
       ingredientYield,
       ingredientPrice
     }
-    createFirestoreItem(collections.ingredients, item);
-    setIngredientName('');
-    setIngredientYield('');
-    setIngredientPrice('');
+    isEditIngredient ? updateFirestoreItem(collections.ingredients, item) : createFirestoreItem(collections.ingredients, item)
+    setIngredientName('')
+    setIngredientYield('')
+    setIngredientPrice('')
     setTitle('Create another ingredint')
   }
 
@@ -70,7 +91,9 @@ function CreateIngredient() {
           value={ingredientPrice}
           onChange={(e) => handleChange(e)}
         />
-        <Input type='submit' value='submit' name="submit" />
+        <Link to='/' onClick={(e) => handleSubmit(e)}>
+          <Input type='submit' value='submit' name="submit" />
+        </Link>
       </Form>
     </Layout>
   );

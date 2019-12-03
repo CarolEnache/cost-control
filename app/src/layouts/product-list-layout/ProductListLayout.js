@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-
-import firebase from '../../firebase-config/firebase';
+import useFetchList from '../../firebase-config/utils/fetchItemsList';
 
 import Title from 'title';
 import ListHeader from 'list-header';
@@ -20,61 +19,38 @@ import { collections } from '../../constants';
 import { Layout } from '../../styled';
 import { Header, ButtonWrapper } from './styled';
 
-const db = firebase.firestore();
-
-const updateItem = (a, b) => {
-  console.log(a, b)
-};
 
 const ProductList = () => {
+  useFetchList(collections.ingredients)
   const [ingredients, setIngredients] = useState([])
-  const context = useContext(StateContext)
   const dispatch = useContext(DispatchContext)
-
+  const context =  useContext(StateContext)
 
   useEffect(() => {
-    dispatch({type: 'TEST'})
-    const abortController = new AbortController()
-    const signal = abortController.signal
+    return setIngredients(context.list)
+  })
 
-    const fetchData = async (data, { signal }) => {
-      let notUpdate = false;
-
-      if (signal) {
-        signal.addEventListener('abort', event => notUpdate = true);
-      }
-
-      await db.collection(data).onSnapshot(snapshot => {
-        const ingredientsCollection = {
-          list: snapshot.docs.map(doc => ({
-            ...doc.data(),
-            id: doc.id
-          }))
-        }
-
-        if (!notUpdate) {
-          setIngredients(ingredientsCollection.list)
-        }
-      });
+  const updateItem = (collection, id) => {
+    if (collection === undefined) { //this is a temporary solution that needs to be fixed
+      return
     }
-    fetchData(collections.ingredients, {signal})
-    return () => abortController.abort();
-  }, []);
 
-  console.log(context)
-
+    return dispatch({ type: 'UPDATE_ITEM', collection, id })
+  };
   return (
     <Layout>
       <Header>
         <Title title='Ingredients list' />
         <ListHeader dynamic='yield' />
       </Header>
-      <ItemsList
-        data={ingredients}
-        icon={DeleteIcon}
-        deleteItem={deleteFirestoreItem}
-        updateItem={updateItem}
-      />
+      <Link to='/update' onClick={() => updateItem()}>
+        <ItemsList
+          data={ingredients}
+          icon={DeleteIcon}
+          deleteItem={deleteFirestoreItem}
+          updateItem={updateItem}
+        />
+      </Link>
       <ButtonWrapper>
         <Link to='/update'>
           <Button name='add'>

@@ -2,12 +2,12 @@ import React, { createContext, useReducer } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-import { initialState, reducer } from './redux';
+import { initialState, reducer } from './redux-like';
 
 import Button, { MenuWrapper } from 'button';
 
-import CreateIngredient from './layouts/create-ingredient';
-import ProductList from './layouts/product-list';
+import CreateIngredient from './layouts/create-ingredient-layout/CreateIngredientLayout';
+import ProductList from './layouts/product-list-layout/ProductListLayout';
 
 import MenuIcon from 'assets/icons/menu.svg';
 import CloseIcon from 'assets/icons/close.svg';

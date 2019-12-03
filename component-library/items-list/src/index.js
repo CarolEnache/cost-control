@@ -3,7 +3,7 @@ import Button from 'button';
 
 import { StyledItemsList, ListItem, ItemName } from './styled';
 
-const ItemsList = ({ data, icon, deleteItem, updateItem }) => (
+const ItemsList = ({ data = [], icon, deleteItem, updateItem }) => (
   <StyledItemsList>
     {data.map(({ ingredientName, ingredientYield, ingredientPrice, id }) => {
       return (
