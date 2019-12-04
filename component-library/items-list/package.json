@@ -7,12 +7,12 @@
     "component:build": "rollup --config rollup.config.js"
   },
   "dependencies": {
+    "button": "^1.0.0",
+    "mock": "^1.0.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "styled-components": "4.3.2",
     "rollup": "^1.21.4",
-    "button": "^1.0.0",
-    "mock": "^1.0.0"
+    "styled-components": "4.3.2"
   },
   "peerDependencies": {
     "react": "^15.0.0 || ^16.0.0",
@@ -20,6 +20,8 @@
     "styled-components": "^4.0.0"
   },
   "devDependencies": {
+    "jest": "^24.9.0",
+    "jest-styled-components": "^6.3.4",
     "rollup-plugin-babel": "^4.3.3"
   }
 }
