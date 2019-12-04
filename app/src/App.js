@@ -20,6 +20,7 @@ const App = () => {
   return (
     <DispatchContext.Provider value={dispatch}>
       <StateContext.Provider value={state}>
+        
         <Router>
           <MenuWrapper >
             <Button name='menu'>
