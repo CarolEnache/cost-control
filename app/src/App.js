@@ -12,6 +12,8 @@ import ProductList from './layouts/product-list-layout/ProductListLayout';
 import MenuIcon from 'assets/icons/menu.svg';
 import CloseIcon from 'assets/icons/close.svg';
 
+import SubscribeToDB from './DataSubscriber';
+
 import './App.css';
 
 const App = () => {
@@ -21,6 +23,7 @@ const App = () => {
   return (
     <DispatchContext.Provider value={dispatch}>
       <StateContext.Provider value={state}>
+        <SubscribeToDB collection='ingredients_list'/>
         <Router>
           <MenuWrapper >
             <Button name='menu'>

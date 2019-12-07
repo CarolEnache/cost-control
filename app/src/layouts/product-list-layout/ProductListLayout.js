@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import useFetchList from '../../firebase-config/utils/fetchItemsList';
 
 import Title from 'title';
 import ListHeader from 'list-header';
@@ -14,14 +13,11 @@ import { StateContext, DispatchContext } from '../../App';
 
 import deleteFirestoreItem from '../../firebase-config/utils/delete';
 
-import { collections } from '../../constants';
-
 import { Layout } from '../../styled';
 import { Header, ButtonWrapper } from './styled';
 
 
 const ProductList = () => {
-  useFetchList(collections.ingredients)
   const [ingredients, setIngredients] = useState([])
   const dispatch = useContext(DispatchContext)
   const context =  useContext(StateContext)
