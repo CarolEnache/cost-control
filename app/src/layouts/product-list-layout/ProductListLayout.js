@@ -8,7 +8,7 @@ import ItemsList from 'items-list';
 import Button from 'button';
 
 import AddIcon from 'assets/icons/add.svg'
-import DeleteIcon from 'assets/icons/delete.svg';
+import EditIcon from 'assets/icons/edit.svg';
 
 import { StateContext, DispatchContext } from '../../App';
 
@@ -47,7 +47,7 @@ const ProductList = () => {
       <Link to='/update' onClick={() => updateItem()}>
         <ItemsList
           data={ingredients}
-          icon={DeleteIcon}
+          icon={EditIcon}
           deleteItem={deleteFirestoreItem}
           updateItem={updateItem}
         />

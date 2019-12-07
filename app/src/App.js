@@ -16,6 +16,7 @@ import './App.css';
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
+  console.log(state)
 
   return (
     <DispatchContext.Provider value={dispatch}>

@@ -5,7 +5,6 @@ import { DispatchContext } from '../../App';
 const db = firebase.firestore();
 
 const useFetchList = (collection)  => {
-  // const [list, setList] = useState(initialState)
   const dispatch = useContext(DispatchContext)
 
   useEffect(() => {

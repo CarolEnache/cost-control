@@ -22,11 +22,6 @@ storiesOf('Button', module)
       <img src={CloseIcon} alt="Close Icon" />
     </Button>
   )
-  .add('Delete', () =>
-    <Button>
-      <img src={DeleteIcon} alt="Delete Icon" />
-    </Button>
-  )
   .add('Edit', () =>
     <Button>
       <img src={EditIcon} alt="Edit Icon" />
@@ -40,6 +35,11 @@ storiesOf('Button', module)
   .add('Menu', () =>
     <Button name='menu'>
       <img src={MenuIcon} alt="Menu Icon" />
+    </Button>
+  )
+  .add('Delete', () =>
+    <Button type='delete'>
+     delete this item
     </Button>
   )
   .add('Select', () =>

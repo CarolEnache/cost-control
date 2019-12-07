@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 
 import Title from 'title';
 import Input from 'input';
+import Button from 'button';
+import deleteFirestoreItem from '../../firebase-config/utils/delete';
 
 import { StateContext, DispatchContext } from '../../App';
 
@@ -18,14 +20,19 @@ function CreateIngredient() {
   const [ingredientPrice, setIngredientPrice] = useState(0)
   const [currentItemId, setCurrentItemId] = useState('')
   const [title, setTitle] = useState('Create ingredient')
+
   const context = useContext(StateContext)
   const dispatch = useContext(DispatchContext)
+
+  const noName = ingredientName === ''
+  const noPrice = ingredientPrice === 0
+  const noYield = ingredientName === 0
+
   const { currentItem, list } = context
   const isEditIngredient = Object.keys(currentItem).length !== 0
 
-  { console.log(context.currentItem, Object.keys(context).length)}
 
-  if (isEditIngredient && ingredientName === '') {
+  if (isEditIngredient && noName) {
     const { id } = currentItem
     const ingredientToBeEdited = list.filter(item => item.id === id)
     const { ingredientName, ingredientPrice, ingredientYield } = ingredientToBeEdited[0]
@@ -50,19 +57,25 @@ function CreateIngredient() {
   }
 
   const handleSubmit = (e) => {
+    if (noName || noPrice || noYield) {
+      return
+    }
     const item = {
       currentItemId,
       ingredientName,
       ingredientYield,
       ingredientPrice
     }
+
     isEditIngredient ? updateFirestoreItem(collections.ingredients, item) : createFirestoreItem(collections.ingredients, item)
     isEditIngredient && dispatch({ type: 'CLEAR_CURRENT_ITEM' })
-    setIngredientName()
-    setIngredientYield()
-    setIngredientPrice('')
+    setIngredientName('')
+    setIngredientYield(0)
+    setIngredientPrice(0)
     setTitle('Create another ingredint')
   }
+
+  const submitValue = isEditIngredient ? 'submit your changes' : 'submit'
 
   return (
     <Layout>
@@ -92,9 +105,18 @@ function CreateIngredient() {
           value={ingredientPrice}
           onChange={(e) => handleChange(e)}
         />
-        <Link to='/' onClick={(e) => handleSubmit(e)}>
-          <Input type='submit' value='submit' name="submit" />
-        </Link>
+        <div>
+          <Link to='/' onClick={(e) => handleSubmit(e)}>
+            <Input type='submit' value={submitValue} name="submit " />
+          </Link>
+          {isEditIngredient && (
+            <Link to='/'>
+              <Button type='delete' onClick={() => deleteFirestoreItem('ingredients_list', currentItem.id)} >
+                delete this item
+              </Button>
+            </Link>
+          )}
+        </div>
       </Form>
     </Layout>
   );
