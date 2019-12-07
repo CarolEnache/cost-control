@@ -16,7 +16,6 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.6",
     "cross-env": "5.0.5",
-    "jest": "^24.9.0",
     "jest-styled-components": "^6.3.4",
     "lerna": "^3.16.4",
     "react": "^16.9.0",
