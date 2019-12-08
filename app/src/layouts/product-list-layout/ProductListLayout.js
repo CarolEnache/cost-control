@@ -11,8 +11,6 @@ import EditIcon from 'assets/icons/edit.svg';
 
 import { StateContext, DispatchContext } from '../../App';
 
-import deleteFirestoreItem from '../../firebase-config/utils/delete';
-
 import { Layout } from '../../styled';
 import { Header, ButtonWrapper } from './styled';
 
@@ -44,7 +42,6 @@ const ProductList = () => {
         <ItemsList
           data={ingredients}
           icon={EditIcon}
-          deleteItem={deleteFirestoreItem}
           updateItem={updateItem}
         />
       </Link>

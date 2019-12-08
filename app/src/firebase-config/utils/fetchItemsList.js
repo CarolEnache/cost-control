@@ -8,7 +8,6 @@ const useFetchList = (collection)  => {
   const dispatch = useContext(DispatchContext)
 
   useEffect(() => {
-    dispatch({ type: 'TEST' })
     const abortController = new AbortController()
     const signal = abortController.signal
 
@@ -28,14 +27,14 @@ const useFetchList = (collection)  => {
         }
 
         if (!notUpdate) {
+          console.log(collection)
           dispatch({ type: 'GET_LIST', list: collection.list})
         }
       });
     }
     fetchListItems(collection, { signal })
-    console.log('data fetched')
     return () => abortController.abort();
-  }, []);
+  }, [dispatch, collection]);
 }
 
 export default useFetchList;

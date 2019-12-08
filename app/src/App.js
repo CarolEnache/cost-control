@@ -8,6 +8,7 @@ import Button, { MenuWrapper } from 'button';
 
 import CreateIngredient from './layouts/create-ingredient-layout/CreateIngredientLayout';
 import ProductList from './layouts/product-list-layout/ProductListLayout';
+import Menu from './layouts/menu-layout/MenuLayout';
 
 import MenuIcon from 'assets/icons/menu.svg';
 import CloseIcon from 'assets/icons/close.svg';
@@ -18,16 +19,18 @@ import './App.css';
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState)
-  console.log(state)
+  const { collection } = state
 
   return (
     <DispatchContext.Provider value={dispatch}>
       <StateContext.Provider value={state}>
-        <SubscribeToDB collection='ingredients_list'/>
+        <SubscribeToDB collection={collection}/>
         <Router>
           <MenuWrapper >
             <Button name='menu'>
-              <img src={MenuIcon} alt="Menu Icon" />
+              <Link to='/menu'>
+                <img src={MenuIcon} alt="Menu Icon" />
+              </Link>
             </Button>
             <Button name='close'>
               <Link to='/'>
@@ -38,6 +41,7 @@ const App = () => {
           <>
             <Route exact path='/' component={ProductList}/>
             <Route path='/update/' component={CreateIngredient} />
+            <Route path='/menu/' component={Menu} />
           </>
         </Router>
       </StateContext.Provider>

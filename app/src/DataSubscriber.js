@@ -1,8 +1,9 @@
 import useFetchList from './firebase-config/utils/fetchItemsList';
 
-const SubscribeToDB = (collection) => {
-  let col = collection.length ? collection : 'ingredients_list'
-  useFetchList(col)
+const SubscribeToDB = (props) => {
+  const isCollectionProvided =  props.collection !== ''
+  let COLLECTION_LIST = isCollectionProvided ? props.collection : 'ingredients_list'
+  useFetchList(COLLECTION_LIST)
   return null
 }
 
