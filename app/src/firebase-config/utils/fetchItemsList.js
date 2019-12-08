@@ -5,11 +5,9 @@ import { DispatchContext } from '../../App';
 const db = firebase.firestore();
 
 const useFetchList = (collection)  => {
-  // const [list, setList] = useState(initialState)
   const dispatch = useContext(DispatchContext)
 
   useEffect(() => {
-    dispatch({ type: 'TEST' })
     const abortController = new AbortController()
     const signal = abortController.signal
 
@@ -29,14 +27,14 @@ const useFetchList = (collection)  => {
         }
 
         if (!notUpdate) {
+          console.log('data was fetched', collection)
           dispatch({ type: 'GET_LIST', list: collection.list})
         }
       });
     }
     fetchListItems(collection, { signal })
-    console.log('data fetched')
     return () => abortController.abort();
-  }, []);
+  }, [dispatch, collection]);
 }
 
 export default useFetchList;

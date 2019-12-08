@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
-import useFetchList from '../../firebase-config/utils/fetchItemsList';
 
 import Title from 'title';
 import ListHeader from 'list-header';
@@ -8,26 +7,32 @@ import ItemsList from 'items-list';
 import Button from 'button';
 
 import AddIcon from 'assets/icons/add.svg'
-import DeleteIcon from 'assets/icons/delete.svg';
+import EditIcon from 'assets/icons/edit.svg';
+import Eye from 'assets/icons/eye.svg';
 
 import { StateContext, DispatchContext } from '../../App';
-
-import deleteFirestoreItem from '../../firebase-config/utils/delete';
-
-import { collections } from '../../constants';
 
 import { Layout } from '../../styled';
 import { Header, ButtonWrapper } from './styled';
 
 
 const ProductList = () => {
-  useFetchList(collections.ingredients)
-  const [ingredients, setIngredients] = useState([])
+  const [products, setProducts] = useState([])
   const dispatch = useContext(DispatchContext)
   const context =  useContext(StateContext)
 
+  const { collection } = context
+  const isIngredientsCollection = collection === 'ingredients_list'
+
+  console.log(collection)
+
+  const title = isIngredientsCollection ? 'Ingredients list' : 'Recipes list'
+  const path = isIngredientsCollection ? '/update' : '/create-recipe'
+  const icon = isIngredientsCollection ? EditIcon : Eye
+  const buttonMSG = isIngredientsCollection ? 'Add ingredient' : 'Create recipe'
+
   useEffect(() => {
-    return setIngredients(context.list)
+    return setProducts(context.list)
   }, [context.list])
 
   const updateItem = (collection, id) => {
@@ -41,21 +46,21 @@ const ProductList = () => {
   return (
     <Layout>
       <Header>
-        <Title title='Ingredients list' />
+        <Title title={title} />
         <ListHeader dynamic='yield' />
       </Header>
       <Link to='/update' onClick={() => updateItem()}>
         <ItemsList
-          data={ingredients}
-          icon={DeleteIcon}
-          deleteItem={deleteFirestoreItem}
+          data={products}
+          icon={icon}
           updateItem={updateItem}
         />
       </Link>
       <ButtonWrapper>
-        <Link to='/update'>
+        <Link to={path}>
           <Button name='add'>
             <img src={AddIcon} alt="Add Icon" />
+            <p>{buttonMSG}</p>
           </Button>
         </Link>
       </ButtonWrapper>

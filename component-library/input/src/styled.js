@@ -20,7 +20,7 @@ export const StyledInput = styled.input`
     padding: 9px 36px;
     width: auto;
     display: block;
-    margin: 0 auto;
+    margin: 2rem auto;
   `}
 `;
 

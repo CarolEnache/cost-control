@@ -40,6 +40,22 @@ export const StyledButton = styled.button`
   color: white;
   font-size: 1rem;
   `}
+
+  ${props => props.type === 'delete' && css`
+  border: none;
+  padding: 0;
+  background: red;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 300;
+  padding: 9px 36px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+`}
+
 `;
 
 export const MenuWrapper = styled.div`

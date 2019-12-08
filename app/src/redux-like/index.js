@@ -1,6 +1,7 @@
 export const initialState = {
   list: [],
-  currentItem: {}
+  currentItem: {},
+  collection: 'ingredients_list'
 }
 
 export const reducer = (state = initialState, action) => {
@@ -22,6 +23,16 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentItem: {}
+      }
+    case 'DISPLAY_INGREDIENTS':
+      return {
+        ...state,
+        collection: 'ingredients_list'
+      }
+    case 'DISPLAY_RECIPES':
+      return {
+        ...state,
+        collection: 'recipe_list'
       }
     default:
       return state;
