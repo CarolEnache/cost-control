@@ -6,9 +6,10 @@ import { initialState, reducer } from './redux-like';
 
 import Button, { MenuWrapper } from 'button';
 
-import CreateIngredient from './layouts/create-ingredient-layout/CreateIngredientLayout';
-import ProductList from './layouts/product-list-layout/ProductListLayout';
-import Menu from './layouts/menu-layout/MenuLayout';
+import CreateIngredient from './layouts/create-ingredient-layout';
+import CreateRecipe from './layouts/create-recipe-layout';
+import ProductList from './layouts/product-list-layout';
+import Menu from './layouts/menu-layout';
 
 import MenuIcon from 'assets/icons/menu.svg';
 import CloseIcon from 'assets/icons/close.svg';
@@ -42,6 +43,7 @@ const App = () => {
             <Route exact path='/' component={ProductList}/>
             <Route path='/update/' component={CreateIngredient} />
             <Route path='/menu/' component={Menu} />
+            <Route path='/create-recipe/' component={CreateRecipe} />
           </>
         </Router>
       </StateContext.Provider>

@@ -1,7 +1,7 @@
 export const initialState = {
   list: [],
   currentItem: {},
-  collection: ''
+  collection: 'ingredients_list'
 }
 
 export const reducer = (state = initialState, action) => {

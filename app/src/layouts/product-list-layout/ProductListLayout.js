@@ -8,6 +8,7 @@ import Button from 'button';
 
 import AddIcon from 'assets/icons/add.svg'
 import EditIcon from 'assets/icons/edit.svg';
+import Eye from 'assets/icons/eye.svg';
 
 import { StateContext, DispatchContext } from '../../App';
 
@@ -16,12 +17,22 @@ import { Header, ButtonWrapper } from './styled';
 
 
 const ProductList = () => {
-  const [ingredients, setIngredients] = useState([])
+  const [products, setProducts] = useState([])
   const dispatch = useContext(DispatchContext)
   const context =  useContext(StateContext)
 
+  const { collection } = context
+  const isIngredientsCollection = collection === 'ingredients_list'
+
+  console.log(collection)
+
+  const title = isIngredientsCollection ? 'Ingredients list' : 'Recipes list'
+  const path = isIngredientsCollection ? '/update' : '/create-recipe'
+  const icon = isIngredientsCollection ? EditIcon : Eye
+  const buttonMSG = isIngredientsCollection ? 'Add ingredient' : 'Create recipe'
+
   useEffect(() => {
-    return setIngredients(context.list)
+    return setProducts(context.list)
   }, [context.list])
 
   const updateItem = (collection, id) => {
@@ -35,20 +46,21 @@ const ProductList = () => {
   return (
     <Layout>
       <Header>
-        <Title title='Ingredients list' />
+        <Title title={title} />
         <ListHeader dynamic='yield' />
       </Header>
       <Link to='/update' onClick={() => updateItem()}>
         <ItemsList
-          data={ingredients}
-          icon={EditIcon}
+          data={products}
+          icon={icon}
           updateItem={updateItem}
         />
       </Link>
       <ButtonWrapper>
-        <Link to='/update'>
+        <Link to={path}>
           <Button name='add'>
             <img src={AddIcon} alt="Add Icon" />
+            <p>{buttonMSG}</p>
           </Button>
         </Link>
       </ButtonWrapper>

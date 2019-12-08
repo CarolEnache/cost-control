@@ -27,7 +27,7 @@ const useFetchList = (collection)  => {
         }
 
         if (!notUpdate) {
-          console.log(collection)
+          console.log('data was fetched', collection)
           dispatch({ type: 'GET_LIST', list: collection.list})
         }
       });

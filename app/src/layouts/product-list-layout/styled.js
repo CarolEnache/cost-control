@@ -8,7 +8,7 @@ export const Header = styled.div`
 
 export const ButtonWrapper = styled.div`
   position: absolute;
-  bottom: 1rem;
+  bottom: 4rem;
   left: 0;
   right: 0;
   display: flex;

@@ -3,7 +3,6 @@ import {storiesOf} from '@storybook/react';
 
 import AddIcon from 'assets/icons/add.svg'
 import CloseIcon from 'assets/icons/close.svg'
-import DeleteIcon from 'assets/icons/delete.svg'
 import EditIcon from 'assets/icons/edit.svg'
 import InfoIcon from 'assets/icons/info.svg'
 import MenuIcon from 'assets/icons/menu.svg'
