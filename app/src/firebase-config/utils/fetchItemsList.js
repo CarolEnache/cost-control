@@ -4,21 +4,21 @@ import { DispatchContext } from '../../App';
 
 const db = firebase.firestore();
 
-const useFetchList = (collection)  => {
+const useFetchList = (COLLECTION)  => {
   const dispatch = useContext(DispatchContext)
 
   useEffect(() => {
     const abortController = new AbortController()
     const signal = abortController.signal
 
-    const fetchListItems = async (collection, { signal }) => {
+    const fetchListItems = async (COLLECTION, { signal }) => {
       let notUpdate = false;
 
       if (signal) {
         signal.addEventListener('abort', event => notUpdate = true);
       }
 
-      await db.collection(collection).onSnapshot(snapshot => {
+      await db.collection(COLLECTION).onSnapshot(snapshot => {
         const collection = {
           list: snapshot.docs.map(doc => ({
             ...doc.data(),
@@ -27,14 +27,13 @@ const useFetchList = (collection)  => {
         }
 
         if (!notUpdate) {
-          console.log('data was fetched', collection)
-          dispatch({ type: 'GET_LIST', list: collection.list})
+          dispatch({ type: COLLECTION, list: collection.list})
         }
       });
     }
-    fetchListItems(collection, { signal })
+    fetchListItems(COLLECTION, { signal })
     return () => abortController.abort();
-  }, [dispatch, collection]);
+  }, [dispatch, COLLECTION]);
 }
 
 export default useFetchList;

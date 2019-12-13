@@ -9,12 +9,26 @@ import {
   SelectList,
 } from './styled';
 
-const Select = ({ data = [], submit }) => {
+const Select = ({ data = [], onClick }) => {
   const [ingredient, setIngredient] = useState();
   const [toggleList, setToggleList] = useState(false);
+  const [quantityUsed, setQuantityUsed] = useState()
+  const [bla, setBla] = useState()
 
-  const ingrediants = data.map(({name}) => name.toLocaleLowerCase());
-  const suggestions = ingrediants.filter(ingredientItem => ingredientItem.includes(ingredient));
+
+  const ingredients = data.map(({ ingredientName }) => ingredientName.toLocaleLowerCase());
+  const suggestions = ingredients.filter(ingredientItem => ingredientItem.includes(ingredient));
+  const [obj] = data.filter(ingredientItem => ingredientItem.ingredientName === bla);
+  let ingredientToSubmit;
+  if (obj) {
+    ingredientToSubmit = {
+      ingredientId: obj.id,
+      quantityUsed
+    }
+  }
+
+  // const { id } = obj
+  console.log(ingredientToSubmit)
 
   const handleChange = (e) => {
     setIngredient(e.target.value);
@@ -25,10 +39,19 @@ const Select = ({ data = [], submit }) => {
     event.preventDefault();
     setIngredient(option);
     setToggleList(false);
+    setBla(option)
+  }
+
+  const handleQuantityChange = (e) => {
+    setQuantityUsed(e.target.value)
+  }
+
+  const onClickk = (a) => {
+    console.log(a)
   }
 
   return (
-    <Form onSubmit={submit}>
+    <>
       <Input
         placeholder={'Type your ingredient'}
         id='someId'
@@ -49,9 +72,11 @@ const Select = ({ data = [], submit }) => {
           create this ingredient
         </Button>
       )}
-      <Input placeholder="2350" id='someId' type='number' label='Quantity used' />
-      <Input type='submit' value='submit' />
-    </Form>
+      <Input placeholder="2350" onChange={(e) => handleQuantityChange(e)} id='someId' type='number' label='Quantity used' />
+      <Button type='delete' onClick={() => onClickk(obj.id)} >
+        delete this item
+      </Button>
+    </>
   )
 };
 

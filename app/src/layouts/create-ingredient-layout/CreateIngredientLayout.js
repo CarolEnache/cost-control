@@ -28,13 +28,13 @@ function CreateIngredient() {
   const noPrice = ingredientPrice === 0
   const noYield = ingredientName === 0
 
-  const { currentItem, list } = context
+  const { currentItem, ingredientsList } = context
   const isEditIngredient = Object.keys(currentItem).length !== 0
 
 
   if (isEditIngredient && noName) {
     const { id } = currentItem
-    const ingredientToBeEdited = list.filter(item => item.id === id)
+    const ingredientToBeEdited = ingredientsList.filter(item => item.id === id)
     const { ingredientName, ingredientPrice, ingredientYield } = ingredientToBeEdited[0]
     setIngredientName(ingredientName)
     setIngredientYield(ingredientYield)
