@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import firebase from '../firebase';
 import { DispatchContext } from '../../App';
 
@@ -7,7 +7,7 @@ const db = firebase.firestore();
 const useFetchList = (collection)  => {
   const dispatch = useContext(DispatchContext)
 
-  useEffect(() => {
+  useMemo(() => {
     const abortController = new AbortController()
     const signal = abortController.signal
 
@@ -27,7 +27,6 @@ const useFetchList = (collection)  => {
         }
 
         if (!notUpdate) {
-          console.log('data was fetched', collection)
           dispatch({ type: 'GET_LIST', list: collection.list})
         }
       });
