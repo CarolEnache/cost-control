@@ -4,7 +4,6 @@ import { storiesOf } from '@storybook/react';
 
 import ProductList from '.';
 
-storiesOf('ProductList', module)
-  .add('Number', () =>
-    <ProductList data={ mockIngredients } />
-  );
+storiesOf('ProductList', module).add('Number', () => (
+  <ProductList data={mockIngredients} />
+));

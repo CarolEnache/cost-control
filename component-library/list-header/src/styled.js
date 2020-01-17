@@ -10,10 +10,14 @@ export const Header = styled.p`
 export const HeaderDetails = styled.span`
   margin-bottom: 5px;
 
-  ${props => props.type === 'name' && css`
-    width: 45%;
-  `}
-  ${props => props.type === 'dynamic' && css`
+  ${props =>
+    props.type === 'name' &&
+    css`
+      width: 45%;
+    `}
+  ${props =>
+    props.type === 'dynamic' &&
+    css`
       margin-right: 45px;
-  `}
+    `}
 `;

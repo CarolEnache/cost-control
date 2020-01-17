@@ -6,7 +6,7 @@ import ProductList from '../src';
 
 describe('ProductList', () => {
   test('renders correctly', () => {
-    const tree = renderer.create(<ProductList>{'Test'}</ProductList>).toJSON()
+    const tree = renderer.create(<ProductList>{'Test'}</ProductList>).toJSON();
     expect(tree).toMatchSnapshot();
-  })
+  });
 });
