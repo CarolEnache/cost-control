@@ -9,7 +9,7 @@ storiesOf('Input', module)
       placeholder="Hello world!"
       id="someId"
       type="text"
-      label="Repice name"
+      label="Recipe name"
     />
   ))
   .add('Submit', () => <Input type="submit" value="submit" name="submit" />)

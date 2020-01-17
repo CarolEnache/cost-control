@@ -75,5 +75,4 @@ export const MenuWrapper = styled.div`
   height: 6rem;
   width: 90%;
   margin: 0 auto;
-}
 `;

@@ -77,7 +77,7 @@ function CreateIngredient() {
     setIngredientName('');
     setIngredientYield(0);
     setIngredientPrice(0);
-    setTitle('Create another ingredint');
+    setTitle('Create another ingredient');
   };
 
   const submitValue = isEditIngredient ? 'submit your changes' : 'submit';

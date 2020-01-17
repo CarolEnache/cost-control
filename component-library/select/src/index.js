@@ -10,8 +10,8 @@ const Select = ({ data = [], submit }) => {
   const [ingredient, setIngredient] = useState();
   const [toggleList, setToggleList] = useState(false);
 
-  const ingrediants = data.map(({ name }) => name.toLocaleLowerCase());
-  const suggestions = ingrediants.filter(ingredientItem =>
+  const ingredients = data.map(({ name }) => name.toLocaleLowerCase());
+  const suggestions = ingredients.filter(ingredientItem =>
     ingredientItem.includes(ingredient)
   );
 
