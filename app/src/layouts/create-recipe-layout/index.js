@@ -1,2 +1,2 @@
-import CreateRecipe from './CreateRecipeLayout'
+import CreateRecipe from './CreateRecipeLayout';
 export default CreateRecipe;

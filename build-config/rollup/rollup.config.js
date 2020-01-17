@@ -10,31 +10,25 @@ module.exports = {
   output: [
     {
       file: 'lib/index.js',
-      format: 'cjs',
+      format: 'cjs'
     },
     {
       file: 'lib/index.es.js',
-      format: 'es',
+      format: 'es'
     }
   ],
-  external: [
-    'react',
-    'styled-components',
-  ],
+  external: ['react', 'styled-components'],
   plugins: [
     babel({
-      exclude: "node_modules/**",
-      presets: [
-        '@babel/preset-env',
-        '@babel/preset-react'
-      ]
+      exclude: 'node_modules/**',
+      presets: ['@babel/preset-env', '@babel/preset-react']
     }),
     commonjs(),
     peerDepsExternal({
-      includeDependencies: false,
+      includeDependencies: false
     }),
     resolve({
-      extensions: ['.js', '.jsx', '.json'],
+      extensions: ['.js', '.jsx', '.json']
     }),
     json(),
     svg()

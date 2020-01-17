@@ -6,7 +6,7 @@ import ListHeader from 'list-header';
 import ItemsList from 'items-list';
 import Button from 'button';
 
-import AddIcon from 'assets/icons/add.svg'
+import AddIcon from 'assets/icons/add.svg';
 import EditIcon from 'assets/icons/edit.svg';
 import Eye from 'assets/icons/eye.svg';
 
@@ -15,57 +15,54 @@ import { StateContext, DispatchContext } from '../../App';
 import { Layout } from '../../styled';
 import { Header, ButtonWrapper } from './styled';
 
-
 const ProductList = () => {
-  const [products, setProducts] = useState([])
-  const dispatch = useContext(DispatchContext)
-  const context =  useContext(StateContext)
+  const [products, setProducts] = useState([]);
+  const dispatch = useContext(DispatchContext);
+  const context = useContext(StateContext);
 
-  const { collection } = context
-  const isIngredientsCollection = collection === 'ingredients_list'
+  const { collection } = context;
+  const isIngredientsCollection = collection === 'ingredients_list';
 
-  console.log(collection)
+  console.log(collection);
 
-  const title = isIngredientsCollection ? 'Ingredients list' : 'Recipes list'
-  const path = isIngredientsCollection ? '/update' : '/create-recipe'
-  const icon = isIngredientsCollection ? EditIcon : Eye
-  const buttonMSG = isIngredientsCollection ? 'Add ingredient' : 'Create recipe'
+  const title = isIngredientsCollection ? 'Ingredients list' : 'Recipes list';
+  const path = isIngredientsCollection ? '/update' : '/create-recipe';
+  const icon = isIngredientsCollection ? EditIcon : Eye;
+  const buttonMSG = isIngredientsCollection
+    ? 'Add ingredient'
+    : 'Create recipe';
 
   useEffect(() => {
-    return setProducts(context.list)
-  }, [context.list])
+    return setProducts(context.list);
+  }, [context.list]);
 
   const updateItem = (collection, id) => {
     if (collection === undefined) {
-      return
+      return;
     }
 
-    return dispatch({ type: 'UPDATE_ITEM', collection, id })
+    return dispatch({ type: 'UPDATE_ITEM', collection, id });
   };
 
   return (
     <Layout>
       <Header>
         <Title title={title} />
-        <ListHeader dynamic='yield' />
+        <ListHeader dynamic="yield" />
       </Header>
-      <Link to='/update' onClick={() => updateItem()}>
-        <ItemsList
-          data={products}
-          icon={icon}
-          updateItem={updateItem}
-        />
+      <Link to="/update" onClick={() => updateItem()}>
+        <ItemsList data={products} icon={icon} updateItem={updateItem} />
       </Link>
       <ButtonWrapper>
         <Link to={path}>
-          <Button name='add'>
+          <Button name="add">
             <img src={AddIcon} alt="Add Icon" />
             <p>{buttonMSG}</p>
           </Button>
         </Link>
       </ButtonWrapper>
     </Layout>
-  )
-}
+  );
+};
 
 export default ProductList;
