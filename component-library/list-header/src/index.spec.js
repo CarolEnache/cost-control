@@ -6,7 +6,7 @@ import ListHeader from '.';
 
 describe('ListHeader', () => {
   test('renders correctly', () => {
-    const tree = renderer.create(<ListHeader>{'Test'}</ListHeader>).toJSON()
+    const tree = renderer.create(<ListHeader>{'Test'}</ListHeader>).toJSON();
     expect(tree).toMatchSnapshot();
-  })
+  });
 });

@@ -1,2 +1,2 @@
-import Menu from './MenuLayout'
+import Menu from './MenuLayout';
 export default Menu;

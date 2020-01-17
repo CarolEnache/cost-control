@@ -5,8 +5,7 @@ const db = firebase.firestore();
 const createFirestoreItem = (collection, item) => {
   try {
     db.collection(collection).add(item);
-  }
-  catch (e) {
+  } catch (e) {
     console.error(e);
   }
 };

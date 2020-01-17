@@ -1,21 +1,21 @@
-import { useEffect, useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import firebase from '../firebase';
 import { DispatchContext } from '../../App';
 
 const db = firebase.firestore();
 
-const useFetchList = (COLLECTION)  => {
-  const dispatch = useContext(DispatchContext)
+const useFetchList = collection => {
+  const dispatch = useContext(DispatchContext);
 
-  useEffect(() => {
-    const abortController = new AbortController()
-    const signal = abortController.signal
+  useMemo(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
 
     const fetchListItems = async (COLLECTION, { signal }) => {
       let notUpdate = false;
 
       if (signal) {
-        signal.addEventListener('abort', event => notUpdate = true);
+        signal.addEventListener('abort', event => (notUpdate = true));
       }
 
       await db.collection(COLLECTION).onSnapshot(snapshot => {
@@ -24,16 +24,16 @@ const useFetchList = (COLLECTION)  => {
             ...doc.data(),
             id: doc.id
           }))
-        }
+        };
 
         if (!notUpdate) {
-          dispatch({ type: COLLECTION, list: collection.list})
+          dispatch({ type: 'GET_LIST', list: collection.list });
         }
       });
-    }
-    fetchListItems(COLLECTION, { signal })
+    };
+    fetchListItems(collection, { signal });
     return () => abortController.abort();
-  }, [dispatch, COLLECTION]);
-}
+  }, [dispatch, collection]);
+};
 
 export default useFetchList;

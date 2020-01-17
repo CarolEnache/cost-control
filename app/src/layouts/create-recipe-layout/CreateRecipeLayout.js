@@ -11,58 +11,66 @@ import { StateContext, DispatchContext } from '../../App';
 import { Layout, Form } from '../../styled';
 
 const shape = {
-  currentItemId: "L",
-  id: "",
-  ingredientName: "Lkjhkjhkjh",
-  ingredientPrice: "",
-  ingredientYield: "",
-
-}
+  currentItemId: 'L',
+  id: '',
+  ingredientName: 'Lkjhkjhkjh',
+  ingredientPrice: '',
+  ingredientYield: ''
+};
 
 const CreateRecipe = () => {
-  const [products, setProducts] = useState([shape])
-  const [testState, setTestState] = useState()
-  const dispatch = useContext(DispatchContext)
-  const context = useContext(StateContext)
-  const ceva = context.recipesList
+  const [products, setProducts] = useState([shape]);
+  const [testState, setTestState] = useState();
+  const dispatch = useContext(DispatchContext);
+  const context = useContext(StateContext);
+  const ceva = context.recipesList;
 
   useEffect(() => {
     if (ceva.length) {
-      setProducts(context.recipesList)
+      setProducts(context.recipesList);
     }
-    return
-  }, [context.recipesList])
+    return;
+  }, [context.recipesList]);
 
-  console.log(products, context.ingredientsList)
+  console.log(products, context.ingredientsList);
 
-  const handleIngredientSubmition = (event) => {
+  const handleIngredientSubmission = event => {
     event.preventDefault();
-    console.log('submited')
-  }
+    console.log('submitted');
+  };
 
   return (
     <Layout>
-      <Title title='Recipe list'/>
+      <Title title="Recipe list" />
       <Form>
         <Input
-          placeholder='meat balls'
-          id='recipe name'
-          type='text'
-          label='Recipe name'
+          placeholder="meat balls"
+          id="recipe name"
+          type="text"
+          label="Recipe name"
           // value={ingredientName}
           // onChange={(e) => handleChange(e)}
         />
-        <Input placeholder="12" id='someId' type='number' label='Number of servings' name='servings' />
+        <Input
+          placeholder="12"
+          id="someId"
+          type="number"
+          label="Number of servings"
+          name="servings"
+        />
         {/* <ItemsList
           data={products}
           icon={icon}
           updateItem={updateItem}
         /> */}
-        <Select placeholder="Hello world!" data={context.ingredientsList} submit={handleIngredientSubmition} />
-
+        <Select
+          placeholder="Hello world!"
+          data={context.ingredientsList}
+          submit={handleIngredientSubmission}
+        />
       </Form>
     </Layout>
-  )
-}
+  );
+};
 
 export default CreateRecipe;

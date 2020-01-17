@@ -19,7 +19,7 @@ const ProductList = ({ data }) => (
         <Button>
           <img src={DeleteIcon} alt="Delete Icon" />
         </Button>
-      </Item>
+      </Item>;
     })}
   </List>
 );
