@@ -32,7 +32,14 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "babel-plugin-styled-components": "^1.10.6",
+    "eslint": "^6.8.0",
+    "eslint-config-node": "^4.0.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.0",
     "lerna": "^3.16.4",
+    "prettier": "^1.19.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
@@ -47,5 +54,19 @@
     "@babel/plugin-transform-react-display-name": "^7.2.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.0"
-  }
+  },
+  "description": "run to install and link all dependencies. ### `yarn bootstrap`",
+  "version": "1.0.0",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarolEnache/cost-control.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarolEnache/cost-control/issues"
+  },
+  "homepage": "https://github.com/CarolEnache/cost-control#readme"
 }
