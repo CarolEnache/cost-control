@@ -21,6 +21,7 @@ import './App.css';
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { collection } = state;
+  console.log(state);
 
   return (
     <DispatchContext.Provider value={dispatch}>

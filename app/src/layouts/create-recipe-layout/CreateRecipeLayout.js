@@ -19,8 +19,8 @@ const shape = {
 };
 
 const CreateRecipe = () => {
-  const [products, setProducts] = useState([shape]);
-  const [testState, setTestState] = useState();
+  const [products, setProducts] = useState();
+  // const [testState, setTestState] = useState();
   const dispatch = useContext(DispatchContext);
   const context = useContext(StateContext);
   const ceva = context.recipesList;
@@ -32,12 +32,19 @@ const CreateRecipe = () => {
     return;
   }, [context.recipesList]);
 
-  console.log(products, context.ingredientsList);
+  const listData = context.ingredientsList;
+  console.log(listData);
 
   const handleIngredientSubmission = event => {
     event.preventDefault();
     console.log('submitted');
   };
+
+  const addedIngredient = ingredient => {
+    // e.preventDefault();
+    return console.log('submitted', ingredient);
+  };
+  console.log('TCL: CreateRecipe -> context', context, products);
 
   return (
     <Layout>
@@ -63,11 +70,7 @@ const CreateRecipe = () => {
           icon={icon}
           updateItem={updateItem}
         /> */}
-        <Select
-          placeholder="Hello world!"
-          data={context.ingredientsList}
-          submit={handleIngredientSubmission}
-        />
+        <Select data={listData} extract={addedIngredient} />
       </Form>
     </Layout>
   );

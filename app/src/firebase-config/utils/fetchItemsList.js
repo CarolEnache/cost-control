@@ -27,7 +27,7 @@ const useFetchList = collection => {
         };
 
         if (!notUpdate) {
-          dispatch({ type: 'GET_LIST', list: collection.list });
+          dispatch({ type: COLLECTION, list: collection.list });
         }
       });
     };

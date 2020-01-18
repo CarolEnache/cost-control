@@ -6,31 +6,29 @@ import select from 'assets/icons/select.svg';
 
 import { Form, SelectList } from './styled';
 
-const Select = ({ data = [], onClick }) => {
+const Select = ({ data = [], extract }) => {
   const [ingredient, setIngredient] = useState();
   const [toggleList, setToggleList] = useState(false);
   const [quantityUsed, setQuantityUsed] = useState();
-  const [bla, setBla] = useState();
 
-  const ingredients = data.map(({ ingredientName }) =>
-    ingredientName.toLocaleLowerCase()
-  );
+  const ingredients =
+    data &&
+    data.map(({ ingredientName }) => ingredientName.toLocaleLowerCase());
   const suggestions = ingredients.filter(ingredientItem =>
     ingredientItem.includes(ingredient)
   );
   const [obj] = data.filter(
-    ingredientItem => ingredientItem.ingredientName === bla
+    ingredientItem => ingredientItem.ingredientName === ingredient
   );
+
   let ingredientToSubmit;
+
   if (obj) {
     ingredientToSubmit = {
-      ingredientId: obj.id,
+      ingredient: obj,
       quantityUsed
     };
   }
-
-  // const { id } = obj
-  console.log(ingredientToSubmit);
 
   const handleChange = e => {
     setIngredient(e.target.value);
@@ -41,16 +39,20 @@ const Select = ({ data = [], onClick }) => {
     event.preventDefault();
     setIngredient(option);
     setToggleList(false);
-    setBla(option);
   };
 
   const handleQuantityChange = e => {
     setQuantityUsed(e.target.value);
   };
 
-  const onClick = a => {
-    console.log(a);
+  const result = e => {
+    e.preventDefault();
+    extract(ingredientToSubmit);
+    setIngredient('');
+    setQuantityUsed(0);
   };
+
+  console.log(ingredient, 'ingredientToSubmit ', ingredientToSubmit, extract);
 
   return (
     <>
@@ -64,8 +66,12 @@ const Select = ({ data = [], onClick }) => {
       />
       <SelectList>
         {toggleList &&
-          suggestions.map(option => (
-            <Button name="select" onClick={event => handleClick(event, option)}>
+          suggestions.map((option, index) => (
+            <Button
+              key={index}
+              name="select"
+              onClick={e => handleClick(e, option)}
+            >
               {option} <img src={select} />
             </Button>
           ))}
@@ -79,9 +85,10 @@ const Select = ({ data = [], onClick }) => {
         id="someId"
         type="number"
         label="Quantity used"
+        value={quantityUsed}
       />
-      <Button type="delete" onClick={() => onClick(obj.id)}>
-        delete this item
+      <Button name="add" onClick={e => result(e)}>
+        {/* delete this item */}
       </Button>
     </>
   );

@@ -25,6 +25,7 @@ const Input = ({
       onClick={onClick}
       step="any"
       required
+      autoComplete="off"
     />
   </StyledInputWrapper>
 );
