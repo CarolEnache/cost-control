@@ -83,11 +83,11 @@ const data = [
   }
 ];
 
-const onClick = event => {
-  event.preventDefault();
-  console.log('submitted');
+const addedIngredient = ingredientToSubmit => {
+  // e.preventDefault();
+  return console.log('submitted', ingredientToSubmit);
 };
 
 storiesOf('Select', module).add('default', () => (
-  <Select placeholder="Hello world!" data={data} onClick={onClick} />
+  <Select placeholder="Hello world!" data={data} extract={addedIngredient} />
 ));
