@@ -3,60 +3,56 @@ import React, { useEffect, useState, useContext } from 'react';
 import Title from 'title';
 import Input from 'input';
 import ItemsList from 'items-list';
-// import Button from 'button';
 import Select from 'select';
 
-import { StateContext, DispatchContext } from '../../App';
+import { StateContext } from '../../App';
+import createFirestoreItem from '../../firebase-config/utils/create';
 
 import { Layout, Form } from '../../styled';
 
-const shape = {
-  currentItemId: 'L',
-  id: '',
-  ingredientName: 'Lkjhkjhkjh',
-  ingredientPrice: '',
-  ingredientYield: ''
-};
-
 const CreateRecipe = () => {
-  const [products, setProducts] = useState();
-  // const [testState, setTestState] = useState();
-  const dispatch = useContext(DispatchContext);
+  const [name, setName] = useState('');
+  const [numberOfPortions, setNumberOfPortions] = useState(0);
+  const [theIngredientsList, setTheIngredientsList] = useState([]);
   const context = useContext(StateContext);
-  const ceva = context.recipesList;
-
-  useEffect(() => {
-    if (ceva.length) {
-      setProducts(context.recipesList);
-    }
-    return;
-  }, [context.recipesList]);
-
   const listData = context.ingredientsList;
-  console.log(listData);
+  const recipe = {
+    name,
+    numberOfPortions,
+    theIngredientsList
+  };
 
-  const handleIngredientSubmission = event => {
-    event.preventDefault();
-    console.log('submitted');
+  const handleName = e => {
+    return setName(e.target.value);
+  };
+
+  const handleNumberOfPortions = e => {
+    return setNumberOfPortions(e.target.value);
   };
 
   const addedIngredient = ingredient => {
-    // e.preventDefault();
-    return console.log('submitted', ingredient);
+    return setTheIngredientsList(theIngredientsList => [
+      ...theIngredientsList,
+      ingredient
+    ]);
   };
-  console.log('TCL: CreateRecipe -> context', context, products);
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    createFirestoreItem('recipe_list', recipe);
+  };
 
   return (
     <Layout>
       <Title title="Recipe list" />
-      <Form>
+      <Form onSubmit={e => handleSubmit(e)}>
         <Input
           placeholder="meat balls"
           id="recipe name"
           type="text"
           label="Recipe name"
-          // value={ingredientName}
-          // onChange={(e) => handleChange(e)}
+          value={name}
+          onChange={e => handleName(e)}
         />
         <Input
           placeholder="12"
@@ -64,13 +60,17 @@ const CreateRecipe = () => {
           type="number"
           label="Number of servings"
           name="servings"
+          onChange={e => handleNumberOfPortions(e)}
         />
-        {/* <ItemsList
-          data={products}
-          icon={icon}
-          updateItem={updateItem}
-        /> */}
+        <ItemsList
+          data={theIngredientsList}
+          // icon={icon}
+          // updateItem={updateItem}
+        />
         <Select data={listData} extract={addedIngredient} />
+        <Input type="submit" value="Submit">
+          submit
+        </Input>
       </Form>
     </Layout>
   );

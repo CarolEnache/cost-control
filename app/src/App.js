@@ -21,7 +21,6 @@ import './App.css';
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { collection } = state;
-  console.log(state);
 
   return (
     <DispatchContext.Provider value={dispatch}>
@@ -30,7 +29,7 @@ const App = () => {
         <Router>
           <MenuWrapper>
             <Button name="menu">
-              <Link to="/menu">
+              <Link to="/">
                 <img src={MenuIcon} alt="Menu Icon" />
               </Link>
             </Button>
@@ -45,9 +44,9 @@ const App = () => {
             </Button>
           </MenuWrapper>
           <>
-            <Route exact path="/" component={ProductList} />
+            <Route exact path="/" component={Menu} />
             <Route path="/update/" component={CreateIngredient} />
-            <Route path="/menu/" component={Menu} />
+            <Route path="/products-list/" component={ProductList} />
             <Route path="/create-recipe/" component={CreateRecipe} />
           </>
         </Router>
