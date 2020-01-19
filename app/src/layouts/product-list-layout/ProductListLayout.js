@@ -23,18 +23,19 @@ const ProductList = () => {
   const { collection } = context;
   const isIngredientsCollection = collection === 'ingredients_list';
 
-  console.log(collection);
-
   const title = isIngredientsCollection ? 'Ingredients list' : 'Recipes list';
   const path = isIngredientsCollection ? '/update' : '/create-recipe';
   const icon = isIngredientsCollection ? EditIcon : Eye;
   const buttonMSG = isIngredientsCollection
     ? 'Add ingredient'
     : 'Create recipe';
+  const state = isIngredientsCollection
+    ? context.ingredientsList
+    : context.recipesList;
 
   useEffect(() => {
-    return setProducts(context.list);
-  }, [context.list]);
+    return setProducts(state);
+  }, [state]);
 
   const updateItem = (collection, id) => {
     if (collection === undefined) {

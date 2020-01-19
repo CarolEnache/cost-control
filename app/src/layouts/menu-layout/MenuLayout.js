@@ -8,10 +8,16 @@ const Menu = () => {
 
   return (
     <>
-      <Link to="/" onClick={() => dispatch({ type: 'DISPLAY_INGREDIENTS' })}>
+      <Link
+        to="/products-list/"
+        onClick={() => dispatch({ type: 'DISPLAY_INGREDIENTS' })}
+      >
         <h1>Ingredients</h1>
       </Link>
-      <Link to="/" onClick={() => dispatch({ type: 'DISPLAY_RECIPES' })}>
+      <Link
+        to="/products-list/"
+        onClick={() => dispatch({ type: 'DISPLAY_RECIPES' })}
+      >
         <h1>Recipes</h1>
       </Link>
     </>

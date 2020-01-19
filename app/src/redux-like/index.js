@@ -1,15 +1,21 @@
 export const initialState = {
-  list: [],
+  ingredientsList: [],
+  recipesList: [],
   currentItem: {},
   collection: 'ingredients_list'
 };
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_LIST':
+    case 'ingredients_list':
       return {
         ...state,
-        list: action.list
+        ingredientsList: action.list
+      };
+    case 'recipe_list':
+      return {
+        ...state,
+        recipesList: action.list
       };
     case 'UPDATE_ITEM':
       return {

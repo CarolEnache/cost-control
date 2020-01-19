@@ -1,3 +1,4 @@
 export const collections = {
-  ingredients: 'ingredients_list'
+  ingredients: 'ingredients_list',
+  recipes: 'recipe_list'
 };
