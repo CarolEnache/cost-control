@@ -13,7 +13,7 @@
     "dev": "start-storybook -p 5555",
     "coverage": "jest --coverage",
     "unit": "jest",
-    "start": "react-scripts start",
+    "start": " yarn && cd app/ && yarn react-scripts start",
     "build-app": "react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject",
