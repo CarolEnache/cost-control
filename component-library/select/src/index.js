@@ -15,12 +15,10 @@ const Select = ({ data = [], extract }) => {
   const ingredients =
     data &&
     data.map(({ ingredientName }) => ingredientName.toLocaleLowerCase());
+
   const suggestions = ingredients.filter(ingredientItem =>
     ingredientItem.includes(ingredient)
   );
-  const [obj] =
-    data &&
-    data.filter(ingredientItem => ingredientItem.ingredientName === ingredient);
 
   const handleChange = e => {
     setIngredient(e.target.value);
@@ -40,9 +38,16 @@ const Select = ({ data = [], extract }) => {
   const result = e => {
     e.preventDefault();
     setToggle(!toggle);
+    const obj =
+      data &&
+      ingredient &&
+      data.filter(
+        ingredientItem =>
+          ingredientItem.ingredientName.toLocaleLowerCase() === ingredient
+      )[0];
 
     if (obj !== undefined) {
-      setIngredient('');
+      setIngredient();
       setQuantityUsed(0);
 
       return extract({ ...obj, quantityUsed });
